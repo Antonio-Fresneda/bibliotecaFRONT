@@ -1,0 +1,24 @@
+<div class="card" >
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered align-middle text-nowrap">
+              <thead>
+                  <tr>
+                      <th class="text-dark font-medium fs-4">Id</th>
+                      <th class="text-dark font-medium fs-4">Nombre</th>
+                      <th class="text-dark font-medium fs-4">Fecha Nacimiento</th>
+                      <th class="text-dark font-medium fs-4">Nacionalidad</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor='let autor of autoresId'>
+                      <td>{{autor.id}}</td>
+                      <td>{{autor.nombre}}</td>
+                      <td>{{autor.fechaNacimiento}}</td>
+                      <td>{{autor.nacionalidad}}</td>
+                  </tr>
+
+              </tbody>
+          </table>
+      </div>
+  </div>

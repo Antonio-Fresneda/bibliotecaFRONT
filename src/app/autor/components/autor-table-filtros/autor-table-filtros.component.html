@@ -1,0 +1,30 @@
+<div class="card" >
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered align-middle text-nowrap">
+              <thead>
+                  <tr>
+                      <th class="text-dark font-medium fs-4">Id</th>
+                      <th class="text-dark font-medium fs-4">Nombre</th>
+                      <th class="text-dark font-medium fs-4">Fecha Nacimiento</th>
+                      <th class="text-dark font-medium fs-4">Nacionalidad</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="autoresFiltros && autoresFiltros.length > 0"> <!-- Verifica que autoresFiltros exista y tenga elementos -->
+                    <tr *ngFor='let autor of autoresFiltros'>
+                        <td>{{autor.id}}</td>
+                        <td>{{autor.nombre}}</td>
+                        <td>{{autor.fechaNacimiento}}</td>
+                        <td>{{autor.nacionalidad}}</td>
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!autoresFiltros || autoresFiltros.length === 0"> <!-- Maneja el caso en que autoresFiltros esté vacío -->
+                    <tr>
+                        <td colspan="4">No se encontraron resultados</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+          </table>
+      </div>
+  </div>
