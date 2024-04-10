@@ -1,0 +1,159 @@
+<h1>Lista Autores</h1>
+<div class="row">
+  <div class="col">
+    <hr>
+    <autor-table [autores]="autores"></autor-table>
+  </div>
+</div>
+
+<!--<hr>
+<h2>Buscar Por Id</h2>
+<div class="row">
+  <div class="col">
+    <shared-search-box (onValue)="searchByAutorId($event)" placeholder="Buscar por id"></shared-search-box>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <autor-table-id [autoresId]="autoresId"></autor-table-id>
+  </div>
+</div>
+<hr>-->
+
+<h2>Buscar Autores</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtFechaNacimiento>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtNacionalidad>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'ASC O DESC'" class="form-control" #txtDireccion>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="emitValue(txtNombre.value, txtFechaNacimiento.value, txtNacionalidad.value, txtDireccion.value)">Buscar</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <autor-table-filtros [autoresFiltros]="autoresFiltros"></autor-table-filtros>
+  </div>
+</div>
+
+<h2>Editar Autor</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtEditarId>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtEditarNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtEditarFechaNacimiento>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtEditarNacionalidad>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="editar(txtEditarId.value, txtEditarNombre.value, txtEditarFechaNacimiento.value, txtEditarNacionalidad.value)">Editar</button>
+  </div>
+</div>
+
+<hr>
+
+<h2>Crear Autor</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtId>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtFechaNacimiento>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtNacionalidad>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="crear(txtId.value, txtNombre.value, txtFechaNacimiento.value, txtNacionalidad.value)">CREAR AUTOR</button>
+  </div>
+</div>
+<hr>
+<h2>Borrar por Id</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtBorrarId>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-danger" (click)="deletedByAutorId(txtBorrarId.value)">Borrar</button>
+  </div>
+</div>
+<hr>
+<h2>Busqueda Autores</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'SortBy'" class="form-control" #txtSortBy>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'ValueSortOrder'" class="form-control" #txtValueSortOrder>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Key'" class="form-control" #txtKey>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Operation'" class="form-control" #txtOperation>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Value'" class="form-control" #txtValue>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'PageIndex'" class="form-control" #txtPageIndex>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'PageSize'" class="form-control" #txtPageSize>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="busqueda(
+      txtSortBy.value,txtValueSortOrder.value,txtKey.value,txtOperation.value,txtValue.value,txtPageIndex.value,txtPageSize.value)">Buscar</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <autor-table-filtros-post [autoresBusqueda]="autoresBusqueda"></autor-table-filtros-post>
+  </div>
+</div>
+
+
+
+
+

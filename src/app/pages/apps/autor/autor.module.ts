@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { AutorPageComponent } from './pages/autor-page.component';
 import { AutorRoutingModule } from './autor-routing.module';
-import { ComponentsModule } from '../component/component.module';
 import { AutorTableComponent } from './components/autor-table/autor-table.component';
 import { AutorTableIdComponent } from './components/autor-table-id/autor-table-id.component';
 import { AutorTableFiltrosComponent } from './components/autor-table-filtros/autor-table-filtros.component';
-
+import { AutorTableFiltrosPostComponent } from './components/autor-table-filtros-post/autor-table-filtros-post.component';
 
 
 @NgModule({
@@ -15,12 +14,14 @@ import { AutorTableFiltrosComponent } from './components/autor-table-filtros/aut
     AutorTableComponent,
     AutorTableIdComponent,
     AutorTableFiltrosComponent,
-    AutorPageComponent
+    AutorTableFiltrosPostComponent,
+    AutorPageComponent,
+
   ],
   imports: [
     CommonModule,
     AutorRoutingModule,
-    ComponentsModule
+    FormsModule
   ]
 })
 export class AutorModule { }

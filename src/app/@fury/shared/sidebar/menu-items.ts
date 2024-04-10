@@ -57,7 +57,7 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
-  },/*
+  },
   {
     path: '/component/nav',
     title: 'Nav',
@@ -66,7 +66,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-  */
+
   {
     path: '/component/table',
     title: 'Table',
@@ -77,7 +77,22 @@ export const ROUTES: RouteInfo[] = [
   },{
     path: '/autor',
     title: 'Autor',
-    icon: 'bi bi-layout-split',
+    icon: 'bi bi-dice-2',
+    class: '',
+    extralink: false,
+    submenu: []
+  },{
+    path: '/genero',
+    title: 'Genero',
+    icon: 'bi bi-dice-3',
+    class: '',
+    extralink: false,
+    submenu: []
+  }
+  ,{
+    path: '/libros',
+    title: 'Libro',
+    icon: 'bi bi-dice-4',
     class: '',
     extralink: false,
     submenu: []

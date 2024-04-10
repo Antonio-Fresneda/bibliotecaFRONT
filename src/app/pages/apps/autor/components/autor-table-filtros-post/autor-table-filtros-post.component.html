@@ -11,14 +11,13 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor='let autor of autores'>
-                      <td>{{autor.id}}</td>
-                      <td>{{autor.nombre}}</td>
-                      <td>{{autor.fechaNacimiento}}</td>
-                      <td>{{autor.nacionalidad}}</td>
-                  </tr>
-
-              </tbody>
+                    <tr *ngFor='let autor of autoresBusqueda'>
+                        <td>{{autor.id}}</td>
+                        <td>{{autor.nombre}}</td>
+                        <td>{{autor.fechaNacimiento}}</td>
+                        <td>{{autor.nacionalidad}}</td>
+                    </tr>
+            </tbody>
           </table>
       </div>
   </div>

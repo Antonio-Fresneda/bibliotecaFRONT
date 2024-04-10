@@ -1,0 +1,28 @@
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Generos disponibles</h4>
+          <div class="table-responsive">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                      <th class="text-dark font-medium fs-4">Id</th>
+                      <th class="text-dark font-medium fs-4">Titulo</th>
+                      <th class="text-dark font-medium fs-4">Año Publicacion</th>
+                      <th class="text-dark font-medium fs-4">ISBN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let l of libros'>
+                    <td>{{l.id}}</td>
+                    <td>{{l.titulo}}</td>
+                    <td>{{l.anoPublicacion}}</td>
+                    <td>{{l.isbn}}</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+      </div>

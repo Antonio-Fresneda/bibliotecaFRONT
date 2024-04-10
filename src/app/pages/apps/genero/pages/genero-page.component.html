@@ -1,0 +1,170 @@
+<h1>Lista Genero</h1>
+<div class="row">
+  <div class="col">
+    <hr>
+      <genero-table [generos]="generos"></genero-table>
+  </div>
+</div>
+
+<hr>
+<h2>Buscar Por Id</h2>
+<div class="row">
+  <div class="col">
+    <shared-search-box (onValue)="searchByGeneroId($event)" placeholder="Buscar por id"></shared-search-box>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <genero-table [generos]="generoId"></genero-table>
+  </div>
+</div>
+
+<hr>
+
+<h2>Borrar por Id</h2>
+<h4>Se borra el genero que corresponda al id introducido</h4>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtBorrarId>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-danger" (click)="deletedByGeneroId(txtBorrarId.value)">Borrar</button>
+  </div>
+</div>
+
+<hr>
+
+
+<h2>Crear Genero</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtId>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtDescripcion>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'EdadRecomendada'" class="form-control" #txtEdadRecomendada>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtUrlWikipedia>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="crear(txtId.value, txtNombre.value, txtDescripcion.value, txtEdadRecomendada.value,txtUrlWikipedia.value)">Crear Genero</button>
+  </div>
+</div>
+
+<hr>
+
+<h2>Editar Autor</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtEditarId>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtEditarNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtEditarDescripcion>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'EdadRecomendada '" class="form-control" #txtEditarEdadRecomendada>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtEditarUrlWikipedia>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="editar(txtEditarId.value, txtEditarNombre.value, txtEditarDescripcion.value, txtEditarEdadRecomendada.value,txtEditarUrlWikipedia.value)">Editar</button>
+  </div>
+</div>
+<hr>
+
+<h2>Buscar Generos</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtFiltrosNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtFiltrosDescripcion>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Edad Recomendada'" class="form-control" #txtFiltrosEdadRecomendada>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Url Wikipedia'" class="form-control" #txtFiltrosUrlWikipedia>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'ASC O DESC'" class="form-control" #txtFiltrosDireccion>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="emitValue(txtFiltrosNombre.value, txtFiltrosDescripcion.value,txtFiltrosEdadRecomendada.value, txtFiltrosUrlWikipedia.value, txtFiltrosDireccion.value)">Buscar</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <genero-table-filtros [generosFiltros]="generosFiltros"></genero-table-filtros>
+  </div>
+</div>
+
+<h2>Busqueda Autores</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'SortBy'" class="form-control" #txtSortBy>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'ValueSortOrder'" class="form-control" #txtValueSortOrder>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Key'" class="form-control" #txtKey>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Operation'" class="form-control" #txtOperation>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Value'" class="form-control" #txtValue>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'PageIndex'" class="form-control" #txtPageIndex>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'PageSize'" class="form-control" #txtPageSize>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="busqueda(
+      txtSortBy.value,txtValueSortOrder.value,txtKey.value,txtOperation.value,txtValue.value,txtPageIndex.value,txtPageSize.value)">Buscar</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <genero-table-filtros [generosFiltros]="generosBusqueda"></genero-table-filtros>
+  </div>
+</div>
+

@@ -11,19 +11,12 @@
                   </tr>
               </thead>
               <tbody>
-                <ng-container *ngIf="autoresFiltros && autoresFiltros.length > 0"> <!-- Verifica que autoresFiltros exista y tenga elementos -->
                     <tr *ngFor='let autor of autoresFiltros'>
                         <td>{{autor.id}}</td>
                         <td>{{autor.nombre}}</td>
                         <td>{{autor.fechaNacimiento}}</td>
                         <td>{{autor.nacionalidad}}</td>
                     </tr>
-                </ng-container>
-                <ng-container *ngIf="!autoresFiltros || autoresFiltros.length === 0"> <!-- Maneja el caso en que autoresFiltros esté vacío -->
-                    <tr>
-                        <td colspan="4">No se encontraron resultados</td>
-                    </tr>
-                </ng-container>
             </tbody>
           </table>
       </div>
