@@ -1,0 +1,298 @@
+<h1>Lista Bibliotecas</h1>
+<div class="row">
+  <div class="col">
+    <hr>
+      <biblioteca-table [bibliotecas]="bibliotecas"></biblioteca-table>
+  </div>
+</div>
+
+<hr>
+
+<h2>Buscar Por Id</h2>
+<div class="row">
+  <div class="col">
+    <shared-search-box (onValue)="searchByBibliotecaId($event)" placeholder="Buscar por id"></shared-search-box>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <biblioteca-table [bibliotecas]="bibliotecaId"></biblioteca-table>
+  </div>
+</div>
+
+<hr>
+
+
+<h2>Borrar por Id</h2>
+<h4>Se borra la biblioteca que corresponda al id introducido</h4>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Id'" class="form-control" #txtBorrarId>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-danger" (click)="deleteByBibliotecaId(txtBorrarId.value)">Borrar</button>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <h2>Crear Biblioteca</h2>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Biblioteca'" class="form-control" #txtIdBiblioteca>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nombre Biblioteca'" class="form-control" #txtNombreBiblioteca>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Direccion '" class="form-control" #txtDireccion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Telefono'" class="form-control" #txtTelefono>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Email'" class="form-control" #txtEmail>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Sitio Web'" class="form-control" #txtSitioWeb>
+    </div>
+  </div>
+  <br>
+  <h3>Asignar Libro</h3>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Libro'" class="form-control" #txtIdLibro>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Titulo'" class="form-control" #txtTitulo>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Año Publicacion '" class="form-control" #txtAnoPublicacion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'ISBN'" class="form-control" #txtIsbn>
+    </div>
+  </div>
+  <br>
+  <h4>Asignar Autor</h4>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtIdAutor>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombreAutor>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtFechaNacimiento>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtNacionalidad>
+    </div>
+  </div>
+  <br>
+  <h4>Asignar Genero</h4>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtIdGenero>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtDescripcion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'EdadRecomendada'" class="form-control" #txtEdadRecomendada>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtUrlWikipedia>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="crear(txtIdBiblioteca.value,txtNombreBiblioteca.value,txtDireccion.value,txtTelefono.value,txtEmail.value,txtSitioWeb.value,txtIdLibro.value,txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,txtIdAutor.value,txtNombreAutor.value,txtFechaNacimiento.value,txtNacionalidad.value,txtIdGenero.value,txtNombre.value, txtDescripcion.value, txtEdadRecomendada.value,txtUrlWikipedia.value)">Crear Biblioteca</button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <h1>Introduce el id de la biblioteca que quieres editar</h1>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Biblioteca'" class="form-control" #txtEditarIdBiblioteca>
+    </div>
+  <h2>Editar Biblioteca</h2>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Nombre Biblioteca'" class="form-control" #txtEditarNombreBiblioteca>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Direccion '" class="form-control" #txtEditarDireccion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Telefono'" class="form-control" #txtEditarTelefono>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Email'" class="form-control" #txtEditarEmail>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Sitio Web'" class="form-control" #txtEditarSitioWeb>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h3>Editar Libro</h3>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Libro'" class="form-control" #txtEditarIdLibro>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Titulo'" class="form-control" #txtEditarTitulo>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Año Publicacion '" class="form-control" #txtEditarAnoPublicacion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'ISBN'" class="form-control" #txtEditarIsbn>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h4>Editar Autor</h4>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtEditarIdAutor>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nombre'" class="form-control" #txtEditarNombreAutor>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtEditarFechaNacimiento>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtEditarNacionalidad>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h4>Editar Genero</h4>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtEditarIdGenero>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Nombre'" class="form-control" #txtEditarNombre>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtEditarDescripcion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'EdadRecomendada'" class="form-control" #txtEditarEdadRecomendada>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtEditarUrlWikipedia>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="editar(txtEditarIdBiblioteca.value,txtEditarNombreBiblioteca.value,txtEditarDireccion.value,txtEditarTelefono.value,txtEditarEmail.value,txtEditarSitioWeb.value,txtEditarIdLibro.value,txtEditarTitulo.value,txtEditarAnoPublicacion.value,txtEditarIsbn.value,txtEditarIdAutor.value,txtEditarNombreAutor.value,txtEditarFechaNacimiento.value,txtEditarNacionalidad.value,txtEditarIdGenero.value,txtEditarNombre.value, txtEditarDescripcion.value, txtEditarEdadRecomendada.value,txtEditarUrlWikipedia.value)">Editar Biblioteca</button>
+    </div>
+  </div>
+</div>
+
+
+<hr>
+
+<h2>Buscar Biblioteca</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtFiltrosNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Direccion '" class="form-control" #txtFiltrosDireccion>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Telefono'" class="form-control" #txtFiltrosTelefono>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Email'" class="form-control" #txtFiltrosEmail>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Sitio Web'" class="form-control" #txtFiltrosSitioWeb>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'ASC O DESC'" class="form-control" #txtFiltrosOrder>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="emitValue(txtFiltrosNombre.value, txtFiltrosDireccion.value,txtFiltrosTelefono.value, txtFiltrosEmail.value, txtFiltrosSitioWeb.value,txtFiltrosOrder.value)">Buscar</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <biblioteca-table-filtros [bibliotecaFiltros]="bibliotecaFiltros"></biblioteca-table-filtros>
+  </div>
+</div>
+
+<hr>
+
+<h2>Busqueda Biblioteca</h2>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'SortBy'" class="form-control" #txtSortBy>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'ValueSortOrder'" class="form-control" #txtValueSortOrder>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Key'" class="form-control" #txtKey>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Operation'" class="form-control" #txtOperation>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Value'" class="form-control" #txtValue>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'PageIndex'" class="form-control" #txtPageIndex>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'PageSize'" class="form-control" #txtPageSize>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="busqueda(
+      txtSortBy.value,txtValueSortOrder.value,txtKey.value,txtOperation.value,txtValue.value,txtPageIndex.value,txtPageSize.value)">Buscar</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <hr>
+    <biblioteca-table-filtros [bibliotecaFiltros]="bibliotecaBusqueda"></biblioteca-table-filtros>
+  </div>
+</div>

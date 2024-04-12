@@ -96,6 +96,14 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
+  },
+  {
+    path: '/biblioteca',
+    title: 'Biblioteca',
+    icon: 'bi bi-dice-5',
+    class: '',
+    extralink: false,
+    submenu: []
   }
 
 

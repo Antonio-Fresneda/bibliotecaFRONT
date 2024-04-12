@@ -36,6 +36,11 @@ export const Approutes: Routes = [
         loadChildren:()=>import('./pages/apps/libros/libros.module').then(m =>m.LibroModule)
 
       },
+      {
+        path:'biblioteca',
+        loadChildren:()=>import('./pages/apps/biblioteca/biblioteca.module').then(m =>m.BibliotecaModule)
+
+      },
     ]
   },
   {

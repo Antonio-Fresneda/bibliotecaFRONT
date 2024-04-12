@@ -1,0 +1,31 @@
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Generos disponibles</h4>
+          <div class="table-responsive">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                      <th class="text-dark font-medium fs-4">Id</th>
+                      <th class="text-dark font-medium fs-4">Nombre</th>
+                      <th class="text-dark font-medium fs-4">Direccion</th>
+                      <th class="text-dark font-medium fs-4">Telefono</th>
+                      <th class="text-dark font-medium fs-4">Email</th>
+                      <th class="text-dark font-medium fs-4">Sitio Web</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let b of bibliotecas'>
+                    <td>{{b.id}}</td>
+                    <td>{{b.nombre}}</td>
+                    <td>{{b.direccion}}</td>
+                    <td>{{b.telefono}}</td>
+                    <td>{{b.email}}</td>
+                    <td>{{b.sitioWeb}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+      </div>

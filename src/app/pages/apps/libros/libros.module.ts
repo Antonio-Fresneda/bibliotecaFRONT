@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/layouts/component/component.module';
 import { LibroPageComponent } from './pages/libro-page.component';
 import { LibroRoutingModule } from './libro-routing';
-import { LibroTableComponent } from './components/genero-table/libro-table.component';
+import { LibroTableComponent } from './components/libro-table/libro-table.component';
+import { LibroTableFiltrosComponent } from './components/libro-table-filtros/libro-table-filtros.component';
 
 
 
@@ -12,7 +13,9 @@ import { LibroTableComponent } from './components/genero-table/libro-table.compo
 @NgModule({
   declarations: [
    LibroPageComponent,
-   LibroTableComponent
+   LibroTableComponent,
+   LibroTableFiltrosComponent
+
 
   ],
   imports: [

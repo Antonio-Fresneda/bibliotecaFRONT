@@ -60,7 +60,7 @@ export class GeneroPageComponent implements OnInit {
           this.generoCrear = [generoCrear];
         }
       }, error => {
-        console.error('Error al crear autor:', error);
+        console.error('Error al crear genero:', error);
       });
   }
 

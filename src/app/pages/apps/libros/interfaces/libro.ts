@@ -1,6 +1,8 @@
 export interface Libro {
   id: number;
   titulo: string;
-  anoPublicacion: number;
+  anoPublicacion: string;
   isbn: string;
+  autorId?:number;
+  generoId?:number;
 }
