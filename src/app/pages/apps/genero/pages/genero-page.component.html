@@ -1,11 +1,156 @@
-<h1>Lista Genero</h1>
+<h1>Lista Generos</h1>
+<hr>
 <div class="row">
   <div class="col">
-    <hr>
+    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+
       <genero-table [generos]="generos"></genero-table>
   </div>
 </div>
+<div class="floating-button">
+  <button (click)="createGenero()"><img src="assets/images/icon/plus.png"  width="50"/></button>
+</div>
 
+<!--
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="p-3">
+        <h4 class="card-title mb-0">Acciones Genero</h4>
+      </div>
+      <div class="card-body border-top">
+        <ul ngbNav #nav="ngbNav"(activeId)="active" class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <button ngbNavLink>Borrar</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <button ngbNavLink>Crear</button>
+            <br>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="3">
+            <button ngbNavLink>Editar</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="4">
+            <button ngbNavLink>Buscar por Id</button>
+            <ng-template ngbNavContent>
+              <div class="row">
+                <div class="col">
+                  <shared-search-box (onValue)="searchByGeneroId($event)" placeholder="Buscar por id"></shared-search-box>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <genero-table [generos]="generoId"></genero-table>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="5">
+            <button ngbNavLink>Busqueda por Filtros</button>
+            <ng-template ngbNavContent>
+              <div class="row">
+                <div class="col">
+                  <input type="text" [placeholder]="'Nombre'" class="form-control" #txtFiltrosNombre>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtFiltrosDescripcion>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Edad Recomendada'" class="form-control" #txtFiltrosEdadRecomendada>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Url Wikipedia'" class="form-control" #txtFiltrosUrlWikipedia>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'ASC O DESC'" class="form-control" #txtFiltrosDireccion>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-primary" (click)="emitValue(txtFiltrosNombre.value, txtFiltrosDescripcion.value,txtFiltrosEdadRecomendada.value, txtFiltrosUrlWikipedia.value, txtFiltrosDireccion.value)">Buscar</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <hr>
+                  <genero-table-filtros [generosFiltros]="generosFiltros"></genero-table-filtros>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="6">
+            <button ngbNavLink>Busqueda Dinamica</button>
+            <ng-template ngbNavContent>
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" [placeholder]="'SortBy'" class="form-control" #txtSortBy>
+                    </div>
+                    <div class="col">
+                      <input type="text" [placeholder]="'ValueSortOrder'" class="form-control" #txtValueSortOrder>
+                    </div>
+                    <div class="col">
+                      <input type="text" [placeholder]="'Key'" class="form-control" #txtKey>
+                    </div>
+                    <div class="col">
+                      <input type="text" [placeholder]="'Operation'" class="form-control" #txtOperation>
+                    </div>
+                    <div class="col">
+                      <input type="text" [placeholder]="'Value'" class="form-control" #txtValue>
+                    </div>
+                    <div class="col">
+                      <input type="text" [placeholder]="'PageIndex'" class="form-control" #txtPageIndex>
+                    </div>
+                    <div class="col">
+                      <input type="text" [placeholder]="'PageSize'" class="form-control" #txtPageSize>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary" (click)="busqueda(
+                        txtSortBy.value,txtValueSortOrder.value,txtKey.value,txtOperation.value,txtValue.value,txtPageIndex.value,txtPageSize.value)">Buscar</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <hr>
+                      <genero-table-filtros [generosFiltros]="generosBusqueda"></genero-table-filtros>
+                    </div>
+                  </div>
+            </ng-template>
+          </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+
+      </div>
+    </div>
+  </div>
+<!--
 <hr>
 <h2>Buscar Por Id</h2>
 <div class="row">
@@ -126,7 +271,7 @@
   </div>
 </div>
 
-<h2>Busqueda Autores</h2>
+<h2>Busqueda Genero</h2>
 <div class="row">
   <div class="col">
     <input type="text" [placeholder]="'SortBy'" class="form-control" #txtSortBy>
@@ -168,3 +313,4 @@
   </div>
 </div>
 
+-->

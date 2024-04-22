@@ -1,0 +1,15 @@
+.floating-button button {
+  width: auto; /* Permitir que el botón se ajuste al tamaño de la imagen */
+  height: auto; /* Permitir que el botón se ajuste al tamaño de la imagen */
+  background: none; /* Eliminar cualquier fondo */
+  border: none; /* Eliminar el borde */
+  padding: 0; /* Eliminar cualquier relleno interno */
+  position: fixed; /* Asegurar que el botón esté en posición fija */
+  bottom: 20px; /* Ajustar la distancia desde la parte inferior */
+  right: 20px; /* Ajustar la distancia desde la derecha */
+}
+
+.floating-button button img {
+  width: 60px; /* Ajustar el tamaño de la imagen según sea necesario */
+  height: auto; /* Mantener la relación de aspecto de la imagen */
+}

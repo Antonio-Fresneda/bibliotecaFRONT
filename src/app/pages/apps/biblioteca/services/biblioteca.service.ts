@@ -29,13 +29,12 @@ export class BibliotecaService {
 
   }
 
-  crearBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,
+  crearBiblioteca(nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,
     idLibro:string,titulo:string,anoPublicacion:string,isbn:string,
     idAutor:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string,
     idGenero:string,nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Biblioteca[]> {
 
     const body = {
-      "id":term,
       "nombre": nombreBiblioteca,
       "direccion": direccion,
       "telefono": telefono,
@@ -67,7 +66,7 @@ export class BibliotecaService {
 
   }
 
-  editarBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,
+  /*editarBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,
     idLibro:string,titulo:string,anoPublicacion:string,isbn:string,
     idAutor:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string,
     idGenero:string,nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Biblioteca[]> {
@@ -105,13 +104,29 @@ export class BibliotecaService {
     return this.http.put<Biblioteca[]>(url, body);
 
   }
+  */
+  editarBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,): Observable<Biblioteca[]> {
+
+    const url = `${ this.apiUrl }/${ term }`
+    const body = {
+      "id": term,
+      "nombre": nombreBiblioteca,
+      "direccion": direccion,
+      "telefono": telefono,
+      "email": email,
+      "sitioWeb": sitioWeb
+  }
+    return this.http.put<Biblioteca[]>(url, body);
+
+  }
+
   busquedaDinamica(nombre:string,direccion:string,telefono:string,email:string,sitioWeb:string,order:string): Observable<Biblioteca[]> {
 
     const url = `${ this.apiUrl }/filtros?nombre=${nombre}&?direccion=${direccion}&telefono=${telefono}&email=${email}&sitioWeb=${sitioWeb}&order=${order}`;
     return this.http.get<Biblioteca[]>( url )
   }
 
-  busquedaBiblioteca(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Biblioteca[]> {
+  /*busquedaBiblioteca(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Biblioteca[]> {
     const url = `${ this.apiUrl }/buscar-bibliotecas`
     const body = {
       "listOrderCriteria": [
@@ -130,6 +145,49 @@ export class BibliotecaService {
       "page": {
         "pageIndex": pageIndex,
         "pageSize": pageSize
+      }
+    }
+    return this.http.post<Biblioteca[]>(url, body);
+  }
+  */
+  busquedaBiblioteca(busqueda:string): Observable<Biblioteca[]> {
+    const url = `${ this.apiUrl }/buscar-bibliotecas`
+    const body = {
+      "listOrderCriteria": [
+        {
+          "sortBy": "id",
+          "valueSortOrder": "asc"
+        }
+      ],
+      "listSearchCriteria": [
+        {
+          "key": "nombre",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+        {
+          "key": "direccion",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+        {
+          "key": "telefono",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+        {
+          "key": "email",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },{
+          "key": "sitioWeb",
+          "operation": "CONTAINS",
+          "value": busqueda
+        }
+      ],
+      "page": {
+        "pageIndex": 0,
+        "pageSize": 10
       }
     }
     return this.http.post<Biblioteca[]>(url, body);

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Titulo'" class="form-control" [(ngModel)]="libro.titulo" #txtEditarTitulo>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'Año Publicacion '" class="form-control" [(ngModel)]="libro.anoPublicacion" #txtEditarAnoPublicacion>
+    </div>
+    <div class="col">
+      <input type="text" [placeholder]="'ISBN'" class="form-control" [(ngModel)]="libro.isbn" #txtEditarIsbn>
+    </div>
+  </div>
+  <br>
+  <h3>Asignar Autor</h3>
+  <h6>Solo puedes asignar autores existentes</h6>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Autor'" class="form-control" [(ngModel)]="libro.autorId" #txtEditarIdAutor>
+    </div>
+  </div>
+  <br>
+  <h3>Asignar Genero</h3>
+  <h6>Solo puedes asignar generos existentes</h6>
+  <div class="row">
+    <div class="col">
+      <input type="text" [placeholder]="'Id Genero'" class="form-control" [(ngModel)]="libro.generoId" #txtEditarIdGenero>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="editar(libro.id, txtEditarTitulo.value, txtEditarAnoPublicacion.value, txtEditarIsbn.value, txtEditarIdAutor.value, txtEditarIdGenero.value)">Editar Libro</button>
+    </div>
+  </div>
+</div>

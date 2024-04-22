@@ -13,7 +13,7 @@ export class NgbdnavBasicComponent {
 	//  basic navs
 	active = 1;
 
-	// vertical 
+	// vertical
 	active2 = 'top';
 
 

@@ -7,6 +7,13 @@ import { AutorTableComponent } from './components/autor-table/autor-table.compon
 import { AutorTableIdComponent } from './components/autor-table-id/autor-table-id.component';
 import { AutorTableFiltrosComponent } from './components/autor-table-filtros/autor-table-filtros.component';
 import { AutorTableFiltrosPostComponent } from './components/autor-table-filtros-post/autor-table-filtros-post.component';
+import { NgbNavModule,  NgbDropdownModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgFor, NgIf } from '@angular/common';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComponentsModule } from 'src/app/layouts/component/component.module';
+import { ModalModule } from '@developer-partners/ngx-modal-dialog';
+import { NewAutorComponent } from './components/new-autor/new-autor.component';
+import { EditAutorComponent } from './components/edit-autor/edit-autor.component';
 
 
 @NgModule({
@@ -16,12 +23,21 @@ import { AutorTableFiltrosPostComponent } from './components/autor-table-filtros
     AutorTableFiltrosComponent,
     AutorTableFiltrosPostComponent,
     AutorPageComponent,
-
+    NewAutorComponent,
+    EditAutorComponent
   ],
   imports: [
     CommonModule,
     AutorRoutingModule,
-    FormsModule
+    ComponentsModule,
+    FormsModule,
+    NgbNavModule,
+    NgbDropdownModule,
+    NgFor,
+    NgIf,
+    NgbAlertModule,
+    NgbPaginationModule,
+    ModalModule
   ]
 })
 export class AutorModule { }

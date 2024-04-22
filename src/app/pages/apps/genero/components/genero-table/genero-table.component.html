@@ -1,29 +1,56 @@
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Generos disponibles</h4>
-          <div class="table-responsive">
-            <table class="table align-middle text-nowrap">
-                <thead>
+<style>
+  /* Eliminar el borde y el fondo del botón */
+  button {
+      border: none;
+      background: none;
+      padding: 0;
+      margin-right: 10px;
+  }
+</style>
+     <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Géneros disponibles</h4>
+              <div class="table-responsive">
+                <table class="table align-middle text-nowrap">
+                  <thead>
                     <tr>
                       <th class="text-dark font-medium fs-4">Id</th>
                       <th class="text-dark font-medium fs-4">Nombre</th>
-                      <th class="text-dark font-medium fs-4">Descripcion</th>
+                      <th class="text-dark font-medium fs-4">Descripción</th>
                       <th class="text-dark font-medium fs-4">Edad Recomendada</th>
                       <th class="text-dark font-medium fs-4">urlWikipedia</th>
+                      <th class="text-dark font-medium fs-4">Acciones</th>
                     </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let g of generos'>
-                    <td>{{g.id}}</td>
-                    <td>{{g.nombre}}</td>
-                    <td>{{g.descripcion}}</td>
-                    <td>{{g.edadRecomendada}}</td>
-                    <td>{{g.urlWikipedia}}</td>
-                </tr>
-                </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let g of paginatedGeneros">
+                      <td>{{ g.id }}</td>
+                      <td>{{ g.nombre }}</td>
+                      <td>{{ g.descripcion }}</td>
+                      <td>{{ g.edadRecomendada }}</td>
+                      <td>{{ g.urlWikipedia }}</td>
+                      <td>
+                        <button (click)="editGenero(g)"><img src="assets/images/icon/pencil.png"  width="20"  /></button>
+                        <button (click)="deleteGenero(g)"><img src="assets/images/icon/trash-can.png" width="20"/></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <div class="card-body border-top">
+          <ngb-pagination
+            [collectionSize]="generos.length"
+            [(page)]="currentPage"
+            [pageSize]="pageSize"
+            (pageChange)="onPageChange($event)"
+            aria-label="Pagination"
+          ></ngb-pagination>
         </div>
       </div>

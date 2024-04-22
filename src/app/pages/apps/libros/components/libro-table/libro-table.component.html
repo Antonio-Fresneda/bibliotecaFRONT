@@ -1,8 +1,18 @@
+<style>
+  /* Eliminar el borde y el fondo del botón */
+  button {
+      border: none;
+      background: none;
+      padding: 0;
+      margin-right: 10px;
+  }
+</style>
+
   <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Generos disponibles</h4>
+          <h4 class="card-title">Libros disponibles</h4>
           <div class="table-responsive">
             <table class="table align-middle text-nowrap">
                 <thead>
@@ -13,20 +23,35 @@
                       <th class="text-dark font-medium fs-4">ISBN</th>
                       <th class="text-dark font-medium fs-4">Autor Id</th>
                       <th class="text-dark font-medium fs-4">Genero Id</th>
+                      <th class="text-dark font-medium fs-4">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor='let l of libros'>
+                  <tr *ngFor='let l of paginatedLibros'>
                     <td>{{l.id}}</td>
                     <td>{{l.titulo}}</td>
                     <td>{{l.anoPublicacion}}</td>
                     <td>{{l.isbn}}</td>
                     <td>{{l.autorId}}</td>
                     <td>{{l.generoId}}</td>
-
-                </tr>
+                    <td>
+                      <button (click)="editLibro(l)"><img src="assets/images/icon/pencil.png"  width="20"  /></button>
+                      <button (click)="deleteLibro(l)" ><img src="assets/images/icon/trash-can.png" width="20"/></button>
+                    </td>
+                  </tr>
                 </tbody>
             </table>
         </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <div class="card-body border-top">
+          <ngb-pagination
+            [collectionSize]="libros.length"
+            [(page)]="currentPage"
+            [pageSize]="pageSize"
+            (pageChange)="onPageChange($event)"
+            aria-label="Pagination"
+          ></ngb-pagination>
         </div>
       </div>

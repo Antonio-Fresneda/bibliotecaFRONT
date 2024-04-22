@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Autor } from '../interfaces/autor';
 import { AutorService } from '../services/autor.service';
-import { popper } from '@popperjs/core';
+import { ModalService } from '@developer-partners/ngx-modal-dialog';
+import { NewAutorComponent } from '../components/new-autor/new-autor.component';
 
 @Component({
   selector: 'autor-page',
-  templateUrl: 'autor-page.component.html'
+  templateUrl: 'autor-page.component.html',
+  styleUrls: ['autor-page.component.css']
 })
 
 export class AutorPageComponent implements OnInit {
+
+  active = 1;
+
+
   public autores: Autor[] = [];
 
   public autoresId:Autor[] = [];
@@ -21,27 +27,39 @@ export class AutorPageComponent implements OnInit {
 
   public autoresBusqueda:Autor[]=[]
 
-  constructor(private autorService: AutorService) { }
+  constructor(
+    private autorService: AutorService,
+    private readonly _modalService:ModalService
+  ) { }
+
 
   ngOnInit(): void {
+    this.busquedaInicial();
+  }
+  @ViewChild('txtValor') txtValor: any;
+
+  busquedaInicial(): void {
     this.autorService.searchAutor().subscribe(
       autores => {
         this.autores = autores;
       }
     );
+
+    this.txtValor.nativeElement.value = '';
   }
+
+
   searchByAutorId(term:string){
     this.autorService.searchAutorById(term).subscribe(autoresId => {
       if (Array.isArray(autoresId)) {
-        this.autoresId = autoresId;
+        this.autoresId = this.autoresId;
       } else {
         this.autoresId = [autoresId];
       }
-      console.log(autoresId)
     });
   }
 
-  deletedByAutorId(term:string){
+  deletedByAutorId(term:number){
     this.autorService.deleteAutorById(term).subscribe(autoresId => {
       if (Array.isArray(autoresId)) {
         this.autoresId = autoresId;
@@ -72,42 +90,10 @@ export class AutorPageComponent implements OnInit {
     console.log(nombre, fechaNacimiento, nacionalidad,direccion);
   }
 
-  editarAutor(term: string, nombre: string, fechaNacimiento: string, nacionalidad: string): void {
-    this.autorService.editarAutor(term, nombre, fechaNacimiento, nacionalidad)
-      .subscribe(autoresEditar => {
-        if (Array.isArray(autoresEditar)) {
-          this.autoresEditar = autoresEditar;
-        } else {
-          this.autoresEditar = [autoresEditar];
-        }
-      });
-  }
 
-  editar(term: string, nombre: string, fechaNacimiento: string, nacionalidad: string): void {
-    this.editarAutor(term, nombre, fechaNacimiento, nacionalidad);
-    console.log(term,nombre,fechaNacimiento,nacionalidad)
-    location.reload()
-  }
-  crearAutor(term: string, nombre: string, fechaNacimiento: string, nacionalidad: string): void {
-    this.autorService.crearAutor(term, nombre, fechaNacimiento, nacionalidad)
-      .subscribe(autoresCrear => {
-        if (Array.isArray(autoresCrear)) {
-          this.autoresCrear = autoresCrear;
-        } else {
-          this.autoresCrear = [autoresCrear];
-        }
-      }, error => {
-        console.error('Error al crear autor:', error);
-      });
-  }
 
-  crear(term: string, nombre: string, fechaNacimiento: string, nacionalidad: string): void {
-    this.crearAutor(term, nombre, fechaNacimiento, nacionalidad);
-    console.log(term, nombre, fechaNacimiento, nacionalidad);
-    location.reload()
-  }
 
-  busquedaAutor(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): void {
+  /*busquedaAutor(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): void {
     this.autorService.busquedaAutor(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize)
       .subscribe(autoresBusqueda => {
         if (Array.isArray(autoresBusqueda)) {
@@ -124,10 +110,38 @@ export class AutorPageComponent implements OnInit {
     this.busquedaAutor(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize);
     console.log(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize);
 
+  }*/
+  busquedaAutor(busqueda:string): void {
+    this.autorService.busquedaAutor(busqueda)
+      .subscribe(autores => {
+        if (Array.isArray(autores)) {
+          this.autores = autores;
+        } else {
+          this.autores = [autores];
+        }
+      }, error => {
+        console.error('Error al encontrar autor:', error);
+      });
+  }
+
+  busqueda(busqueda:string): void {
+    this.busquedaAutor(busqueda);
   }
 
 
+
+  public createAutor():void{
+    this._modalService.show<Autor>(NewAutorComponent,{
+      title:'Crear Autor'}
+    ).result()
+      .subscribe(newAutor =>{
+        this.autores?.push(newAutor);
+      })
+
+  }
+
 }
+
 
 
 

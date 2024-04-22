@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control form-control-sm" [(ngModel)]="autor.nombre" #txtEditarNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Descripcion '" class="form-control form-control-sm" [(ngModel)]="autor.fechaNacimiento" #txtFechaNacimiento>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'EdadRecomendada'" class="form-control form-control-sm" [(ngModel)]="autor.nacionalidad"#txtEditarEdadRecomendada>
+  </div>
+
+</div>
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="editar(autor.id, txtEditarNombre.value, txtFechaNacimiento.value, txtEditarEdadRecomendada.value)">Editar</button>
+  </div>
+</div>

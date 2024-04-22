@@ -68,6 +68,40 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <!-- ==================================-->
+    <!-- ======= Basic Nav ===== -->
+    <!-- ==================================-->
+    <div class="col-12">
+      <div class="card">
+        <div class="p-3">
+          <h4 class="card-title mb-0">Basic Nav</h4>
+        </div>
+        <div class="card-body border-top">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1">
+              <button ngbNavLink>One</button>
+              <ng-template ngbNavContent>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+              <button ngbNavLink>Two</button>
+              <ng-template ngbNavContent>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="3">
+              <button ngbNavLink>Three</button>
+              <ng-template ngbNavContent>
+              </ng-template>
+            </li>
+          </ul>
+
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+          <div class="bg-light p-3 rounded">Active: {{ active }}</div>
+        </div>
+      </div>
+    </div>
   <!-- ==================================-->
   <!-- ======= Alternative markup ===== -->
   <!-- ==================================-->
@@ -135,7 +169,7 @@
             </ng-template>
           </ng-container>
         </nav>
-        
+
         <div [ngbNavOutlet]="nav2" class="mt-2"></div>
       </div>
     </div>
@@ -195,12 +229,56 @@
               </ng-template>
             </ng-container>
           </div>
-        
+
           <div [ngbNavOutlet]="nav3" class="ms-4"></div>
         </div>
-        
+
         <div class="bg-light p-3 rounded">Active: {{ active2 }}</div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="row">
+
+  <div class="col-12">
+    <div class="card">
+      <div class="p-3">
+        <h4 class="card-title mb-0">Basic Nav</h4>
+      </div>
+      <div class="card-body border-top">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <button ngbNavLink>One</button>
+            <ng-template ngbNavContent>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <button ngbNavLink>Two</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </li>
+          <li ngbNavItem="3">
+            <button ngbNavLink>Three</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+        <div class="bg-light p-3 rounded">Active: {{ active }}</div>
+      </div>
+    </div>
+  </div>

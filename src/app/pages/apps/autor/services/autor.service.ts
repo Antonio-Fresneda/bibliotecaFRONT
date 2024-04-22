@@ -22,7 +22,7 @@ export class AutorService {
     return this.http.get<Autor[]>( url )
   }
 
-  deleteAutorById(term:string): Observable<Autor[]> {
+  deleteAutorById(term:number): Observable<Autor[]> {
 
     const url = `${ this.apiUrl }/${ term }`;
     return this.http.delete<Autor[]>( url )
@@ -34,7 +34,7 @@ export class AutorService {
     return this.http.get<Autor[]>( url )
   }
 
-  editarAutor(term:string,nombre?:string,fechaNacimiento?:string,nacionalidad?:string): Observable<Autor[]> {
+  editarAutor(term:number,nombre?:string,fechaNacimiento?:string,nacionalidad?:string): Observable<Autor[]> {
 
     const url = `${ this.apiUrl }/${ term }`
     const body= {
@@ -46,16 +46,15 @@ export class AutorService {
     return this.http.put<Autor[]>( url,body )
   }
 
-  crearAutor(term: string, nombre: string, fechaNacimiento: string, nacionalidad: string): Observable<Autor[]> {
+  crearAutor(nombre: string, fechaNacimiento: string, nacionalidad: string): Observable<Autor[]> {
     const body = {
-      "id": term,
       "nombre": nombre,
       "fechaNacimiento": fechaNacimiento,
       "nacionalidad": nacionalidad
     };
     return this.http.post<Autor[]>(this.apiUrl, body);
   }
-
+  /*
   busquedaAutor(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Autor[]> {
     const url = `${ this.apiUrl }/buscar-autores`
     const body = {
@@ -75,6 +74,35 @@ export class AutorService {
       "page": {
         "pageIndex": pageIndex,
         "pageSize": pageSize
+      }
+    }
+    return this.http.post<Autor[]>(url, body);
+  }
+  */
+  busquedaAutor(busqueda:string): Observable<Autor[]> {
+    const url = `${ this.apiUrl }/buscar-autores`
+    const body = {
+      "listOrderCriteria": [
+        {
+          "sortBy": "id",
+          "valueSortOrder": "asc"
+        }
+      ],
+      "listSearchCriteria": [
+        {
+          "key": "nombre",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+    {
+          "key": "nacionalidad",
+          "operation": "CONTAINS",
+          "value":busqueda
+        }
+      ],
+      "page": {
+        "pageIndex": 0,
+        "pageSize":10
       }
     }
     return this.http.post<Autor[]>(url, body);

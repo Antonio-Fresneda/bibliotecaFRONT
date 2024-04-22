@@ -22,7 +22,7 @@ export class LibroService {
     return this.http.get<Libro[]>( url )
   }
 
-  deleteLibroById(term:string): Observable<Libro[]> {
+  deleteLibroById(term:number): Observable<Libro[]> {
 
     const url = `${ this.apiUrl }/${ term }`;
     return this.http.delete<Libro[]>( url )
@@ -35,7 +35,7 @@ export class LibroService {
     return this.http.get<Libro[]>( url )
   }
 
-  busquedaLibro(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Libro[]> {
+  /*busquedaLibro(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Libro[]> {
     const url = `${ this.apiUrl }/buscar-libros`
     const body = {
       "listOrderCriteria": [
@@ -57,7 +57,7 @@ export class LibroService {
       }
     }
     return this.http.post<Libro[]>(url, body);
-  }
+  }*/
 
   crearLibro(titulo:string,anoPublicacion:string,isbn:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Libro[]> {
     const body = {
@@ -80,7 +80,7 @@ export class LibroService {
 
   }
 
-  editarLibro(term:string,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string,idGenero:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Libro[]> {
+  editarLibro(term:number,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero:string): Observable<Libro[]> {
     const url = `${ this.apiUrl }/${ term }`;
     const body = {
       "id": term,
@@ -88,21 +88,47 @@ export class LibroService {
       "anoPublicacion": anoPublicacion,
       "isbn": isbn,
       "autor": {
-        "id": idAutor,
-        "nombre": nombreAutor,
-        "fechaNacimiento": fechaNacimiento,
-        "nacionalidad": nacionalidad,
+        "id": idAutor
       },
       "genero": {
         "id": idGenero,
-        "nombre": nombre,
-        "descripcion": descripcion,
-        "edadRecomendada": edadRecomendada,
-        "urlWikipedia": urlWikipedia
       }
     }
     return this.http.put<Libro[]>(url, body);
 
+  }
+  busquedaLibro(busqueda:string): Observable<Libro[]> {
+    const url = `${ this.apiUrl }/buscar-libros`
+    const body ={
+      "listOrderCriteria": [
+        {
+          "sortBy": "id",
+          "valueSortOrder": "asc"
+        }
+      ],
+      "listSearchCriteria": [
+        {
+          "key": "titulo",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+    {
+          "key": "anoPublicacion",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+    {
+          "key": "isbn",
+          "operation": "CONTAINS",
+          "value": busqueda
+        }
+      ],
+      "page": {
+        "pageIndex": 0,
+        "pageSize":10
+      }
+    }
+    return this.http.post<Libro[]>(url, body);
   }
 
 

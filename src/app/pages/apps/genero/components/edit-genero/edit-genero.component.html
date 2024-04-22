@@ -1,0 +1,22 @@
+<div class="row">
+
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control form-control-sm"[(ngModel)]="genero.nombre" #txtEditarNombre>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Descripcion '" class="form-control form-control-sm" [(ngModel)]="genero.descripcion" #txtEditarDescripcion>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'EdadRecomendada'" class="form-control form-control-sm" [(ngModel)]="genero.edadRecomendada"#txtEditarEdadRecomendada>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'UrlWikipedia'" class="form-control form-control-sm" [(ngModel)]="genero.urlWikipedia" #txtEditarUrlWikipedia>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="editar(genero.id, txtEditarNombre.value, txtEditarDescripcion.value, txtEditarEdadRecomendada.value,txtEditarUrlWikipedia.value)">Editar</button>
+  </div>
+</div>

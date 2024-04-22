@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^16.0.1",
     "@angular/platform-server": "^16.0.1",
     "@angular/router": "^16.0.1",
+    "@developer-partners/ngx-modal-dialog": "^1.0.5",
     "@ng-bootstrap/ng-bootstrap": "14.1.1",
     "@popperjs/core": "^2.11.7",
     "apexcharts": "^3.40.0",

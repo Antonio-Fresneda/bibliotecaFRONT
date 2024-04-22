@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Libro } from '../interfaces/libro';
 import { LibroService } from '../services/libro.service';
+import { NewLibroComponent } from '../components/new-libro/new-libro.component';
+import { ModalService } from '@developer-partners/ngx-modal-dialog';
 
 @Component({
   selector: 'libro-page',
-  templateUrl: 'libro-page.component.html'
+  templateUrl: 'libro-page.component.html',
+  styleUrls: ['libro-page.component.css']
+
 })
 
 export class LibroPageComponent implements OnInit {
+
+  active=1;
 
   public libros: Libro[] = [];
 
@@ -22,7 +28,13 @@ export class LibroPageComponent implements OnInit {
   public librosEditar:Libro[]=[];
 
 
-  constructor(private libroService: LibroService) { }
+  constructor(
+    private libroService: LibroService,
+    private readonly _modalService:ModalService) { }
+
+
+
+  @ViewChild('txtValor') txtValor: any;
 
 
   ngOnInit(): void {
@@ -32,6 +44,17 @@ export class LibroPageComponent implements OnInit {
       }
     );
   }
+
+  busquedaInicial(): void {
+    this.libroService.searchLibro().subscribe(
+      libros => {
+        this.libros = libros;
+      }
+    );
+
+    this.txtValor.nativeElement.value = '';
+  }
+
   searchByLibroId(term:string){
     this.libroService.searchLibroById(term).subscribe(libroId => {
       if (Array.isArray(libroId)) {
@@ -39,17 +62,6 @@ export class LibroPageComponent implements OnInit {
       } else {
         this.libroId = [libroId];
       }
-    });
-  }
-  deletedByLibroId(term:string){
-    this.libroService.deleteLibroById(term).subscribe(libroId => {
-      if (Array.isArray(libroId)) {
-        this.libroId = libroId;
-      } else {
-        this.libroId = [libroId];
-      }
-      console.log(libroId)
-      location.reload()
     });
   }
 
@@ -71,7 +83,7 @@ export class LibroPageComponent implements OnInit {
     console.log(titulo,anoPublicacion,isbn,direccion);
   }
 
-  busquedaLibro(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): void {
+  /*busquedaLibro(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): void {
     this.libroService.busquedaLibro(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize)
       .subscribe(librosBusqueda => {
         if (Array.isArray(librosBusqueda)) {
@@ -86,7 +98,7 @@ export class LibroPageComponent implements OnInit {
     this.busquedaLibro(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize);
     console.log(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize);
 
-  }
+  }*/
 
   crearLibro(titulo:string,anoPublicacion:string,isbn:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): void {
     this.libroService.crearLibro(titulo,anoPublicacion,isbn,nombreAutor,fechaNacimiento,nacionalidad, nombre, descripcion,edadRecomendada,urlWikipedia)
@@ -107,21 +119,32 @@ export class LibroPageComponent implements OnInit {
     location.reload()
   }
 
-  editarLibro(term:string,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string,idGenero:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): void {
-    this.libroService.editarLibro(term,titulo,anoPublicacion,isbn,idAutor,nombreAutor,fechaNacimiento,nacionalidad,idGenero, nombre, descripcion,edadRecomendada,urlWikipedia)
-      .subscribe(librosEditar => {
-        if (Array.isArray(librosEditar)) {
-          this.librosEditar = librosEditar;
+
+
+  public createLibro():void{
+    this._modalService.show<Libro>(NewLibroComponent,{
+      title:'Crear Genero'}
+    ).result()
+      .subscribe(newGenero =>{
+        this.libros?.push(newGenero);
+      })
+
+  }
+  busquedaLibro(busqueda:string): void {
+    this.libroService.busquedaLibro(busqueda)
+      .subscribe(libros => {
+        if (Array.isArray(libros)) {
+          this.libros = libros;
         } else {
-          this.librosEditar = [librosEditar];
+          this.libros = [libros];
         }
+      }, error => {
+        console.error('Error al encontrar autor:', error);
       });
   }
 
-  editar(term:string,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string,idGenero:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): void {
-    this.editarLibro(term,titulo,anoPublicacion,isbn,idAutor,nombreAutor,fechaNacimiento,nacionalidad,idGenero, nombre, descripcion,edadRecomendada,urlWikipedia);
-    console.log(term,titulo,anoPublicacion,isbn,idAutor,nombreAutor,fechaNacimiento,nacionalidad,idGenero, nombre, descripcion,edadRecomendada,urlWikipedia)
-    location.reload()
+  busqueda(busqueda:string): void {
+    this.busquedaLibro(busqueda);
   }
 
 

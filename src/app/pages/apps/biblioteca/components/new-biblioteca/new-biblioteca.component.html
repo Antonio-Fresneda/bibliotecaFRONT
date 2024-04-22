@@ -1,0 +1,75 @@
+<br>
+              <div class="row">
+                <div class="col">
+                  <input type="text" [placeholder]="'Nombre Biblioteca'" class="form-control" #txtNombreBiblioteca>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Direccion '" class="form-control" #txtDireccion>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Telefono'" class="form-control" #txtTelefono>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Email'" class="form-control" #txtEmail>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Sitio Web'" class="form-control" #txtSitioWeb>
+                </div>
+              </div>
+              <br>
+              <h3>Asignar Libro</h3>
+              <div class="row">
+                <div class="col">
+                  <input type="text" [placeholder]="'Id Libro'" class="form-control" #txtIdLibro>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Titulo'" class="form-control" #txtTitulo>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Año Publicacion '" class="form-control" #txtAnoPublicacion>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'ISBN'" class="form-control" #txtIsbn>
+                </div>
+              </div>
+              <br>
+              <h4>Asignar Autor</h4>
+              <div class="row">
+                <div class="col">
+                  <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtIdAutor>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombreAutor>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtFechaNacimiento>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtNacionalidad>
+                </div>
+              </div>
+              <br>
+              <h4>Asignar Genero</h4>
+              <div class="row">
+                <div class="col">
+                  <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtIdGenero>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtDescripcion>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'EdadRecomendada'" class="form-control" #txtEdadRecomendada>
+                </div>
+                <div class="col">
+                  <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtUrlWikipedia>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-primary" (click)="crear(txtNombreBiblioteca.value,txtDireccion.value,txtTelefono.value,txtEmail.value,txtSitioWeb.value,txtIdLibro.value,txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,txtIdAutor.value,txtNombreAutor.value,txtFechaNacimiento.value,txtNacionalidad.value,txtIdGenero.value,txtNombre.value, txtDescripcion.value, txtEdadRecomendada.value,txtUrlWikipedia.value)">Crear Biblioteca</button>
+                </div>
+              </div>

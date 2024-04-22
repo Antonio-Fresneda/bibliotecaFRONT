@@ -6,20 +6,33 @@ import { ComponentsModule } from 'src/app/layouts/component/component.module';
 import { GeneroPageComponent } from './pages/genero-page.component';
 import { GeneroRoutingModule } from './genero-routing';
 import { GeneroTableFiltrosComponent } from './components/genero-table-filtros/genero-table-filtros.component';
+import { NgbNavModule, NgbDropdownModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgFor, NgIf } from '@angular/common';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from '@developer-partners/ngx-modal-dialog';
+import { EditGeneroComponent } from './components/edit-genero/edit-genero.component';
+
 
 @NgModule({
   declarations: [
    GeneroTableComponent,
    GeneroPageComponent,
-   GeneroTableFiltrosComponent
+   GeneroTableFiltrosComponent,
+   EditGeneroComponent
 
   ],
   imports: [
     CommonModule,
     GeneroRoutingModule,
     ComponentsModule,
-    FormsModule
-
+    FormsModule,
+    NgbNavModule,
+    NgbDropdownModule,
+    NgFor,
+    NgIf,
+    NgbAlertModule,
+    NgbPaginationModule,
+    ModalModule
   ]
 
 })

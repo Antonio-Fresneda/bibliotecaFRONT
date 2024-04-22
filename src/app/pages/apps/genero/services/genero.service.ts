@@ -22,16 +22,15 @@ export class GeneroService {
     return this.http.get<Genero[]>( url )
   }
 
-  deleteGeneroById(term:string): Observable<Genero[]> {
+  deleteGeneroById(term:number): Observable<Genero[]> {
 
     const url = `${ this.apiUrl }/${ term }`;
     return this.http.delete<Genero[]>( url )
 
   }
 
-  crearGenero(term: string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Genero[]> {
+  crearGenero( nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Genero[]> {
     const body = {
-      "id": term,
       "nombre": nombre,
       "descripcion": descripcion,
       "edadRecomendada": edadRecomendada,
@@ -40,7 +39,7 @@ export class GeneroService {
     return this.http.post<Genero[]>(this.apiUrl, body);
   }
 
-  editarGenero(term: string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Genero[]> {
+  editarGenero(term: number, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Genero[]> {
 
     const url = `${ this.apiUrl }/${ term }`
     const body = {
@@ -59,7 +58,7 @@ export class GeneroService {
     return this.http.get<Genero[]>( url )
   }
 
-  busquedaAutor(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Genero[]> {
+  /*busquedaGenero(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): Observable<Genero[]> {
     const url = `${ this.apiUrl }/buscar-generos`
     const body = {
       "listOrderCriteria": [
@@ -82,5 +81,45 @@ export class GeneroService {
     }
     return this.http.post<Genero[]>(url, body);
   }
+  */
+  busquedaGenero(busqueda:string): Observable<Genero[]> {
+    const url = `${ this.apiUrl }/buscar-generos`
+    const body = {
+      "listOrderCriteria": [
+        {
+          "sortBy": "id",
+          "valueSortOrder": "asc"
+        }
+      ],
+      "listSearchCriteria": [
+        {
+          "key": "nombre",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+    {
+          "key": "descripcion",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+    {
+          "key": "edadRecomendada",
+          "operation": "CONTAINS",
+          "value": busqueda
+        },
+    {
+          "key": "urlWikipedia",
+          "operation": "CONTAINS",
+          "value": busqueda
+        }
+      ],
+      "page": {
+        "pageIndex": 0,
+        "pageSize":10
+      }
+    }
+    return this.http.post<Genero[]>(url, body);
+  }
+
 
 }

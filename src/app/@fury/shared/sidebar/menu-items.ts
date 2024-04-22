@@ -10,6 +10,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  /*
   {
     path: '/component/alert',
     title: 'Alert',
@@ -74,17 +75,18 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
-  },{
+  },
+  */{
     path: '/autor',
     title: 'Autor',
-    icon: 'bi bi-dice-2',
+    icon: 'bi bi-people',
     class: '',
     extralink: false,
     submenu: []
   },{
     path: '/genero',
     title: 'Genero',
-    icon: 'bi bi-dice-3',
+    icon: 'bi bi-journal-bookmark',
     class: '',
     extralink: false,
     submenu: []
@@ -92,7 +94,7 @@ export const ROUTES: RouteInfo[] = [
   ,{
     path: '/libros',
     title: 'Libro',
-    icon: 'bi bi-dice-4',
+    icon: 'bi bi-book',
     class: '',
     extralink: false,
     submenu: []
@@ -100,7 +102,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/biblioteca',
     title: 'Biblioteca',
-    icon: 'bi bi-dice-5',
+    icon: 'bi bi-bookshelf',
     class: '',
     extralink: false,
     submenu: []
