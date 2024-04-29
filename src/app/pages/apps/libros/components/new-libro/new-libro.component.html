@@ -12,38 +12,25 @@
     </div>
   </div>
   <br>
-  <h4>Asignar Autor</h4>
-  <div class="row">
-    <div class="col">
-      <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombreAutor>
-    </div>
-    <div class="col">
-      <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtFechaNacimiento>
-    </div>
-    <div class="col">
-      <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtNacionalidad>
-    </div>
-  </div>
+
+  <label for="selector">Selecciona un autor:</label>
   <br>
-  <h4>Asignar Genero</h4>
-  <div class="row">
-    <div class="col">
-      <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
-    </div>
-    <div class="col">
-      <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtDescripcion>
-    </div>
-    <div class="col">
-      <input type="text" [placeholder]="'EdadRecomendada'" class="form-control" #txtEdadRecomendada>
-    </div>
-    <div class="col">
-      <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtUrlWikipedia>
-    </div>
-  </div>
+  <select class="custom-select form-control" [(ngModel)]="autorSeleccionado">
+    <option *ngFor="let autor of autores" [value]="autor.id">Id: {{ autor.id }} - Nombre: {{ autor.nombre }} </option>
+  </select>
+  <br>
+
+
+  <label for="selector">Selecciona un genero:</label>
+  <br>
+  <select class="custom-select form-control" [(ngModel)]="generoSeleccionado">
+    <option *ngFor="let g of generos" [value]="g.id">Id: {{ g.id }} - Nombre: {{ g.nombre }} </option>
+  </select>
+
   <br>
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary" (click)="crear(txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,txtNombreAutor.value,txtFechaNacimiento.value,txtNacionalidad.value,txtNombre.value, txtDescripcion.value, txtEdadRecomendada.value,txtUrlWikipedia.value)">Crear Libro</button>
+      <button class="btn btn-primary" (click)="crear(txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,autorSeleccionado,generoSeleccionado)">Crear Libro</button>
     </div>
   </div>
 </div>

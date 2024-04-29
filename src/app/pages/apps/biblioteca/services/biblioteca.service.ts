@@ -16,6 +16,12 @@ export class BibliotecaService {
     return this.http.get<Biblioteca[]>( url )
   }
 
+  contarBibliotecas( ): Observable<number> {
+
+    const url = this.apiUrl + '/count';
+    return this.http.get<number>( url )
+  }
+
   searchBibliotecaById(term:string): Observable<Biblioteca[]> {
 
     const url = `${ this.apiUrl }/${ term }`;
@@ -29,10 +35,9 @@ export class BibliotecaService {
 
   }
 
-  crearBiblioteca(nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,
-    idLibro:string,titulo:string,anoPublicacion:string,isbn:string,
-    idAutor:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string,
-    idGenero:string,nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Biblioteca[]> {
+  crearBiblioteca(nombreBiblioteca: string, direccion: string, telefono: string, email: string, sitioWeb: string, idsLibros: string[]): Observable<Biblioteca[]> {
+
+    const libros = idsLibros.map(id => ({ id }));
 
     const body = {
       "nombre": nombreBiblioteca,
@@ -40,31 +45,12 @@ export class BibliotecaService {
       "telefono": telefono,
       "email": email,
       "sitioWeb": sitioWeb,
-      "libros": [
-        {
-          "id": idLibro,
-          "titulo":titulo ,
-          "anoPublicacion":anoPublicacion ,
-          "isbn": isbn,
-          "autor": {
-            "id": idAutor,
-            "nombre": nombreAutor,
-            "fechaNacimiento": fechaNacimiento,
-            "nacionalidad": nacionalidad
-          },
-          "genero": {
-            "id": idGenero,
-            "nombre": nombre,
-            "descripcion":descripcion,
-            "edadRecomendada": edadRecomendada,
-            "urlWikipedia": urlWikipedia
-          }
-        }
-      ]
-    }
-    return this.http.post<Biblioteca[]>(this.apiUrl, body);
+      "libros": libros
+    };
 
+    return this.http.post<Biblioteca[]>(this.apiUrl, body);
   }
+
 
   /*editarBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,
     idLibro:string,titulo:string,anoPublicacion:string,isbn:string,

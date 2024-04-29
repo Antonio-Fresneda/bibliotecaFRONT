@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/layouts/component/component.module';
 import { LibroPageComponent } from './pages/libro-page.component';
 import { LibroRoutingModule } from './libro-routing';
@@ -11,6 +11,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { EditLibroComponent } from './components/edit-libro/edit-libro.component';
+import { NewLibroComponent } from './components/new-libro/new-libro.component';
 
 
 
@@ -19,7 +20,8 @@ import { EditLibroComponent } from './components/edit-libro/edit-libro.component
    LibroPageComponent,
    LibroTableComponent,
    LibroTableFiltrosComponent,
-   EditLibroComponent
+   EditLibroComponent,
+   NewLibroComponent
 
 
   ],
@@ -28,6 +30,7 @@ import { EditLibroComponent } from './components/edit-libro/edit-libro.component
     LibroRoutingModule,
     ComponentsModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbNavModule,
     NgbDropdownModule,
     NgFor,

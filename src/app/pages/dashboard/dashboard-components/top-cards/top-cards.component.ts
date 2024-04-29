@@ -9,12 +9,14 @@ export class TopCardsComponent implements OnInit {
 
   topcards:topcard[];
 
-  constructor() { 
+  constructor() {
 
     this.topcards=topcards;
   }
 
   ngOnInit(): void {
   }
+
+
 
 }

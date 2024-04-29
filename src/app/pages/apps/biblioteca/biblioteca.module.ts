@@ -11,6 +11,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { EditBibliotecaComponent } from './components/edit-biblioteca/edit-biblio.component';
+import { NewBibliotecaComponent } from './components/new-biblioteca/new-biblioteca.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { EditBibliotecaComponent } from './components/edit-biblioteca/edit-bibli
     BiblitoecaPageComponent,
     BibliotecaTableFiltrosComponent,
     EditBibliotecaComponent,
+    NewBibliotecaComponent
   ],
   imports: [
     CommonModule,

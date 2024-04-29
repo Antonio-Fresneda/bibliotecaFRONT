@@ -16,6 +16,12 @@ export class GeneroService {
     return this.http.get<Genero[]>( url )
   }
 
+  contarGeneros( ): Observable<number> {
+
+    const url = this.apiUrl + '/count';
+    return this.http.get<number>( url )
+  }
+
   searchGeneroById(term:string): Observable<Genero[]> {
 
     const url = `${ this.apiUrl }/${ term }`;

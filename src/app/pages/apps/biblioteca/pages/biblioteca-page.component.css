@@ -13,3 +13,8 @@
   width: 60px; /* Ajustar el tamaño de la imagen según sea necesario */
   height: auto; /* Mantener la relación de aspecto de la imagen */
 }
+.modal-header h4.modal-title {
+  color: #ff0000; /* Cambia el color del texto del título a rojo */
+  font-size: 20px; /* Cambia el tamaño del texto del título */
+  font-weight: bold; /* Hace que el texto del título sea negrita */
+}

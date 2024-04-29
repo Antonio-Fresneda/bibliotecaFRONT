@@ -16,6 +16,12 @@ export class AutorService {
     return this.http.get<Autor[]>( url )
   }
 
+  contarAutores( ): Observable<number> {
+
+    const url = this.apiUrl + '/count';
+    return this.http.get<number>( url )
+  }
+
   searchAutorById(term:string): Observable<Autor[]> {
 
     const url = `${ this.apiUrl }/${ term }`;

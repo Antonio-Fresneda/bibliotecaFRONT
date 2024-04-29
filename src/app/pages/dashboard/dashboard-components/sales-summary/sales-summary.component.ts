@@ -39,13 +39,22 @@ export class SalesSummaryComponent implements OnInit {
     this.salesChartOptions = {
       series: [
         {
-          name: "Iphone 13",
-          data: [0, 31, 40, 28, 51, 42, 109, 100],
+          name: "Bibliotecas ",
+          data: [0, 31, 40, 28, 40, 22, 10, 3],
         },
         {
-          name: "Oneplue 9",
-          data: [0, 11, 32, 45, 32, 34, 52, 41],
+          name: "Generos ",
+          data: [0, 10, 32, 45, 32, 27, 17, 8],
         },
+        {
+          name: "Autores ",
+          data: [0, 5, 32, 41, 32, 22, 20, 11],
+        },
+        {
+          name: "Libros ",
+          data: [0, 21, 38, 47, 32, 20, 14, 4],
+        },
+
       ],
       chart: {
         fontFamily: 'Nunito Sans,sans-serif',

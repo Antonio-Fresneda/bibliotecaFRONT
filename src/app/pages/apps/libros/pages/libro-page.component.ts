@@ -3,6 +3,7 @@ import { Libro } from '../interfaces/libro';
 import { LibroService } from '../services/libro.service';
 import { NewLibroComponent } from '../components/new-libro/new-libro.component';
 import { ModalService } from '@developer-partners/ngx-modal-dialog';
+import { Autor } from '../../autor/interfaces/autor';
 
 @Component({
   selector: 'libro-page',
@@ -27,6 +28,7 @@ export class LibroPageComponent implements OnInit {
 
   public librosEditar:Libro[]=[];
 
+  public autores:Autor[]=[]
 
   constructor(
     private libroService: LibroService,
@@ -100,30 +102,13 @@ export class LibroPageComponent implements OnInit {
 
   }*/
 
-  crearLibro(titulo:string,anoPublicacion:string,isbn:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): void {
-    this.libroService.crearLibro(titulo,anoPublicacion,isbn,nombreAutor,fechaNacimiento,nacionalidad, nombre, descripcion,edadRecomendada,urlWikipedia)
-      .subscribe(librosCrear => {
-        if (Array.isArray(librosCrear)) {
-          this.librosCrear = librosCrear;
-        } else {
-          this.librosCrear = [librosCrear];
-        }
-      }, error => {
-        console.error('Error al crear libro:', error);
-      });
-  }
 
-  crear(titulo:string,anoPublicacion:string,isbn:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): void {
-    this.crearLibro(titulo,anoPublicacion,isbn,nombreAutor,fechaNacimiento,nacionalidad, nombre, descripcion,edadRecomendada,urlWikipedia);
-    console.log(titulo,anoPublicacion,isbn,nombreAutor,fechaNacimiento,nacionalidad, nombre, descripcion,edadRecomendada,urlWikipedia),
-    location.reload()
-  }
 
 
 
   public createLibro():void{
     this._modalService.show<Libro>(NewLibroComponent,{
-      title:'Crear Genero'}
+      title:'Crear Libro'}
     ).result()
       .subscribe(newGenero =>{
         this.libros?.push(newGenero);

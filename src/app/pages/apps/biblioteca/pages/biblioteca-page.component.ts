@@ -154,7 +154,9 @@ export class BiblitoecaPageComponent implements OnInit {
 
   public createBiblio():void{
     this._modalService.show<Biblioteca>(NewBibliotecaComponent,{
-      title:'Crear Autor'}
+      title:'Crear Biblioteca',
+
+    }
     ).result()
       .subscribe(newBiblioteca =>{
         this.bibliotecas?.push(newBiblioteca);

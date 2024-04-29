@@ -24,6 +24,7 @@ import { DOCUMENT } from '@angular/common';
     </div>`,
   encapsulation: ViewEncapsulation.None
 })
+
 export class SpinnerComponent implements OnDestroy {
   public isSpinnerVisible = true;
 
@@ -34,11 +35,11 @@ export class SpinnerComponent implements OnDestroy {
       event => {
         if (event instanceof NavigationStart) {
           this.isSpinnerVisible = true;
-        } 
+        }
         else if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
           this.isSpinnerVisible = false;
         }
-      },      
+      },
       () => {
         this.isSpinnerVisible = false;
       }

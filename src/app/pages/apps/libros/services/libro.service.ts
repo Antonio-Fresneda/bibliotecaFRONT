@@ -16,6 +16,12 @@ export class LibroService {
     return this.http.get<Libro[]>( url )
   }
 
+  contarLibros( ): Observable<number> {
+
+    const url = this.apiUrl + '/count';
+    return this.http.get<number>( url )
+  }
+
   searchLibroById(term:string): Observable<Libro[]> {
 
     const url = `${ this.apiUrl }/${ term }`;
@@ -59,21 +65,16 @@ export class LibroService {
     return this.http.post<Libro[]>(url, body);
   }*/
 
-  crearLibro(titulo:string,anoPublicacion:string,isbn:string,nombreAutor:string,fechaNacimiento:string,nacionalidad:string, nombre: string, descripcion: string,edadRecomendada: string, urlWikipedia: string): Observable<Libro[]> {
+  crearLibro(titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero:string): Observable<Libro[]> {
     const body = {
       "titulo": titulo,
       "anoPublicacion": anoPublicacion,
       "isbn": isbn,
       "autor": {
-        "nombre": nombreAutor ,
-        "fechaNacimiento": fechaNacimiento,
-        "nacionalidad": nacionalidad,
+        "id": idAutor
       },
       "genero": {
-        "nombre": nombre,
-        "descripcion": descripcion,
-        "edadRecomendada": edadRecomendada,
-        "urlWikipedia": urlWikipedia,
+        "id":idGenero
       }
     }
     return this.http.post<Libro[]>(this.apiUrl, body);

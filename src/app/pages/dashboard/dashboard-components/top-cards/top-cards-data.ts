@@ -7,7 +7,31 @@ export interface topcard {
 
 export const topcards: topcard[] = [
 
-    {
+  {
+    bgcolor: 'success',
+    icon: 'bi bi-book',
+    title: 'Libros',
+    subtitle: '4 disponibles'
+  } ,
+  {
+    bgcolor: 'danger',
+    icon: 'bi bi-journal-bookmark',
+    title: 'Generos',
+    subtitle: '8 disponibles'
+  },
+  {
+    bgcolor: 'warning',
+    icon: 'bi bi-people',
+    title: 'Autores',
+    subtitle: '11 disponibles'
+  },
+  {
+    bgcolor: 'info',
+    icon: 'bi bi-bookshelf',
+    title: 'Bibliotecas',
+    subtitle: '3 disponibles'
+  },
+    /*{
         bgcolor: 'success',
         icon: 'bi bi-wallet',
         title: '$21k',
@@ -30,6 +54,6 @@ export const topcards: topcard[] = [
         icon: 'bi bi-bag',
         title: '210',
         subtitle: 'Weekly Sales'
-    },
+    },*/
 
-] 
+]

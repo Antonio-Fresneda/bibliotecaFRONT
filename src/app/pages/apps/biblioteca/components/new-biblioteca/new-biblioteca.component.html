@@ -1,4 +1,5 @@
-<br>
+ <div class="custom-modal-dialog">
+  <br>
               <div class="row">
                 <div class="col">
                   <input type="text" [placeholder]="'Nombre Biblioteca'" class="form-control" #txtNombreBiblioteca>
@@ -17,59 +18,32 @@
                 </div>
               </div>
               <br>
-              <h3>Asignar Libro</h3>
-              <div class="row">
-                <div class="col">
-                  <input type="text" [placeholder]="'Id Libro'" class="form-control" #txtIdLibro>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Titulo'" class="form-control" #txtTitulo>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Año Publicacion '" class="form-control" #txtAnoPublicacion>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'ISBN'" class="form-control" #txtIsbn>
-                </div>
-              </div>
+              <label for="selector">Selecciona uno o varios libros:</label>
               <br>
-              <h4>Asignar Autor</h4>
-              <div class="row">
-                <div class="col">
-                  <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtIdAutor>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombreAutor>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Fecha de Nacimiento '" class="form-control" #txtFechaNacimiento>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Nacionalidad'" class="form-control" #txtNacionalidad>
+              <!--<select class="custom-select form-control" [(ngModel)]="librosSeleccionados" multiple>
+                <option *ngFor="let l of libros" [value]="l.id">Id: {{ l.id }} - Nombre: {{ l.titulo }} </option>
+              </select>-->
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
+                  Selecciona uno o varios libros
+                </button>
+                <div class="dropdown-menu" [class.show]="dropdownOpen">
+                  <div *ngFor="let l of libros">
+                    <label class="dropdown-item">
+                      <input type="checkbox" [(ngModel)]="libroSeleccionado[l.id]" [value]="l.id"> Id: {{ l.id }} - Nombre: {{ l.titulo }}
+                    </label>
+                  </div>
+                  <button class="btn btn-primary" (click)="confirmSelection()">Confirmar</button>
                 </div>
               </div>
+
+
               <br>
-              <h4>Asignar Genero</h4>
-              <div class="row">
-                <div class="col">
-                  <input type="text" [placeholder]="'Id Autor'" class="form-control" #txtIdGenero>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Descripcion '" class="form-control" #txtDescripcion>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'EdadRecomendada'" class="form-control" #txtEdadRecomendada>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'UrlWikipedia'" class="form-control" #txtUrlWikipedia>
-                </div>
-              </div>
+
               <br>
               <div class="row">
                 <div class="col">
-                  <button class="btn btn-primary" (click)="crear(txtNombreBiblioteca.value,txtDireccion.value,txtTelefono.value,txtEmail.value,txtSitioWeb.value,txtIdLibro.value,txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,txtIdAutor.value,txtNombreAutor.value,txtFechaNacimiento.value,txtNacionalidad.value,txtIdGenero.value,txtNombre.value, txtDescripcion.value, txtEdadRecomendada.value,txtUrlWikipedia.value)">Crear Biblioteca</button>
+                  <button class="btn btn-primary" (click)="crear(txtNombreBiblioteca.value,txtDireccion.value,txtTelefono.value,txtEmail.value,txtSitioWeb.value,librosSeleccionados)">Crear Biblioteca</button>
                 </div>
               </div>
+</div>
