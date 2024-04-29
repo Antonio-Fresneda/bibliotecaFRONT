@@ -28,7 +28,7 @@ export class NewLibroComponent implements OnInit {
     private libroService: LibroService,
     private autorService:AutorService,
     private generoService:GeneroService,
-    private readonly _ModalReference:ModalReference<Libro>
+    private readonly _modalReference:ModalReference<Libro>
 
   ) { }
 

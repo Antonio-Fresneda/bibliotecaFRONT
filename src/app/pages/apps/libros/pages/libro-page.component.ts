@@ -40,11 +40,7 @@ export class LibroPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.libroService.searchLibro().subscribe(
-      libros => {
-        this.libros = libros;
-      }
-    );
+   this.busquedaInicial();
   }
 
   busquedaInicial(): void {
@@ -102,10 +98,6 @@ export class LibroPageComponent implements OnInit {
 
   }*/
 
-
-
-
-
   public createLibro():void{
     this._modalService.show<Libro>(NewLibroComponent,{
       title:'Crear Libro'}
@@ -115,6 +107,7 @@ export class LibroPageComponent implements OnInit {
       })
 
   }
+
   busquedaLibro(busqueda:string): void {
     this.libroService.busquedaLibro(busqueda)
       .subscribe(libros => {
@@ -124,7 +117,7 @@ export class LibroPageComponent implements OnInit {
           this.libros = [libros];
         }
       }, error => {
-        console.error('Error al encontrar autor:', error);
+        console.error('Error al encontrar libro:', error);
       });
   }
 

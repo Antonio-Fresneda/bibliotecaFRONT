@@ -11,13 +11,13 @@ export const topcards: topcard[] = [
     bgcolor: 'success',
     icon: 'bi bi-book',
     title: 'Libros',
-    subtitle: '4 disponibles'
+    subtitle: '10 disponibles'
   } ,
   {
     bgcolor: 'danger',
     icon: 'bi bi-journal-bookmark',
     title: 'Generos',
-    subtitle: '8 disponibles'
+    subtitle: '9 disponibles'
   },
   {
     bgcolor: 'warning',
@@ -29,7 +29,7 @@ export const topcards: topcard[] = [
     bgcolor: 'info',
     icon: 'bi bi-bookshelf',
     title: 'Bibliotecas',
-    subtitle: '3 disponibles'
+    subtitle: '8 disponibles'
   },
     /*{
         bgcolor: 'success',

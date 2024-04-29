@@ -1,0 +1,16 @@
+.bar-chart {
+  display: flex;
+  flex-direction: row;
+}
+
+.bar-wrapper {
+  margin-right: 20px;
+}
+
+.bar {
+  background-color: blue; /* Color de las barras */
+  width: 20px; /* Ancho de las barras */
+}
+.progress-bar {
+  background-color: #007bff; /* Color de las barras */
+}
