@@ -107,7 +107,24 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
+  },
+  {
+    path: '/usuario',
+    title: 'Usuario',
+    icon: 'bi bi-person',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/rol',
+    title: 'Rol',
+    icon: 'bi bi-person-rolodex',
+    class: '',
+    extralink: false,
+    submenu: []
   }
+
 
 
 

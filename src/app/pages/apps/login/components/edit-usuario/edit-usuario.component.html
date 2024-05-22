@@ -1,0 +1,40 @@
+
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Email'" class="form-control" [(ngModel)]="usuario.email" #txtEmail>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Clave '" class="form-control" [(ngModel)]="usuario.clave" #txtClave>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control"[(ngModel)]="usuario.nombre" #txtNombre>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Apellidos '" class="form-control" [(ngModel)]="usuario.apellidos" #txtApellidos>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Telefono'" class="form-control" [(ngModel)]="usuario.telefono" #txtTelefono>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Fecha Nacimiento'" class="form-control" [(ngModel)]="usuario.fechaNacimiento" #txtFechaNacimiento>
+  </div>
+</div>
+
+  <br>
+  <label for="selector">Selecciona un rol:</label>
+  <br>
+  <select class="custom-select form-control" [(ngModel)]="usuario.rol">
+    <option *ngFor="let rol of rol" [value]="rol.nombre">Id: {{ rol.id }} - Nombre: {{ rol.nombre }} </option>
+  </select>
+  <br>
+
+
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="editar(usuario.id,txtEmail.value,txtClave.value,txtNombre.value, txtApellidos.value, txtTelefono.value,txtFechaNacimiento.value,usuario.rol)">EditUsuario</button>
+  </div>
+</div>

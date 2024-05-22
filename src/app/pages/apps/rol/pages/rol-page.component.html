@@ -1,0 +1,23 @@
+<h1>Lista Rol</h1>
+<hr>
+<!--<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
+  </div>
+</div>-->
+<br>
+<div class="row">
+  <div class="col">
+
+      <rol-table [rol]="rol"></rol-table>
+  </div>
+</div>
+<div class="floating-button">
+  <button (click)="createRol()"><img src="assets/images/icon/plus.png"  width="50"/></button>
+</div>

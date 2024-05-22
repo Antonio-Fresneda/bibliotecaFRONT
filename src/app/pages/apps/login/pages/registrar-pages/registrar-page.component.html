@@ -1,0 +1,48 @@
+
+<div class="form-container">
+  <img src="assets/images/logos/logo-biblioteca.png" alt="homepage" class="dark-logo" width="120">
+
+  <div class="row">
+    <div class="col">
+      <label for="inputEmail">Email:</label>
+      <input type="email" class="form-control" #txtEmail aria-describedby="emailHelp" placeholder="Ingresa tu email">
+    </div>
+    <div class="col">
+      <label for="inputPassword">Contraseña:</label>
+      <input type="password" class="form-control" #txtClave placeholder="Ingresa tu contraseña">
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <label for="inputNombre">Nombre:</label>
+      <input type="text" class="form-control" #txtNombre placeholder="Ingresa tu nombre">
+    </div>
+    <div class="col">
+      <label for="inputApellido">Apellidos:</label>
+      <input type="text" class="form-control" #txtApellido placeholder="Ingresa tu apellido">
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <label for="inputTelefono">Telefono:</label>
+      <input type="text" class="form-control" #txtTelefono placeholder="Ingresa tu telefono">
+    </div>
+    <div class="col">
+      <label for="inputFechaNacimiento">Fecha Nacimiento:</label>
+      <input type="text" class="form-control" #txtFechaNacimiento placeholder="Ingresa tu Fecha Nacimiento en formato dd/MM/yyyy">
+    </div>
+  </div>
+  <br>
+  <button (click)="registrar(txtEmail.value, txtClave.value, txtNombre.value, txtApellido.value, txtTelefono.value, txtFechaNacimiento.value)" class="btn btn-primary btn-block">Registrarse</button>
+
+  <br>
+
+  <a class="nav-link" href="/login">Volver a login</a>
+
+</div>

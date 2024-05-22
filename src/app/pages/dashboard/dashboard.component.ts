@@ -16,6 +16,7 @@ export class DashboardComponent implements AfterViewInit {
   public numeroDeGenerosDisponibles: number = 0;
   public numeroDeBibliotecasDisponibles: number = 0;
   public numeroDeAutoresDisponibles: number = 0;
+  private myChart: Chart | undefined;
 
   constructor(
     private bibliotecaService: BibliotecaService,
@@ -55,6 +56,7 @@ export class DashboardComponent implements AfterViewInit {
         console.error('Error al obtener el número de generos disponibles:', error);
       }
     );
+
   }
 
   obtenerNumeroDeBibliotecasDisponibles(): void {
@@ -82,26 +84,29 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   actualizarGrafico(): void {
-    if (
-      this.numeroDeLibrosDisponibles !== 0 &&
-      this.numeroDeGenerosDisponibles !== 0 &&
-      this.numeroDeBibliotecasDisponibles !== 0 &&
-      this.numeroDeAutoresDisponibles !== 0 &&
-      this.barChart
-    ) {
-      this.drawBarChart();
+    if (this.barChart) {
+      if (this.myChart) {
+        this.actualizarDatosGrafico();
+      } else {
+        this.drawBarChart();
+      }
     }
   }
 
   drawBarChart(): void {
     const ctx = this.barChart.nativeElement.getContext('2d');
-    const myChart = new Chart(ctx, {
+    this.myChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Libros', 'Géneros', 'Autores', 'Bibliotecas'],
         datasets: [{
           label: 'Cantidad Disponible',
-          data: [this.numeroDeLibrosDisponibles, this.numeroDeGenerosDisponibles, this.numeroDeAutoresDisponibles, this.numeroDeBibliotecasDisponibles],
+          data: [
+            this.numeroDeLibrosDisponibles,
+            this.numeroDeGenerosDisponibles,
+            this.numeroDeAutoresDisponibles,
+            this.numeroDeBibliotecasDisponibles
+          ],
           backgroundColor: [
             'rgba(75, 192, 192, 0.2)',
             'rgba(255, 99, 132, 0.2)',
@@ -125,5 +130,17 @@ export class DashboardComponent implements AfterViewInit {
         }
       }
     });
+  }
+
+  actualizarDatosGrafico(): void {
+    if (this.myChart) {
+      this.myChart.data.datasets[0].data = [
+        this.numeroDeLibrosDisponibles,
+        this.numeroDeGenerosDisponibles,
+        this.numeroDeAutoresDisponibles,
+        this.numeroDeBibliotecasDisponibles
+      ];
+      this.myChart.update();
+    }
   }
 }

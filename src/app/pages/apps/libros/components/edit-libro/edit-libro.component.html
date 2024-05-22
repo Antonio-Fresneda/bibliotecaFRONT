@@ -12,24 +12,32 @@
   </div>
   <br>
   <h3>Asignar Autor</h3>
-  <h6>Solo puedes asignar autores existentes</h6>
-  <div class="row">
-    <div class="col">
-      <input type="text" [placeholder]="'Id Autor'" class="form-control" [(ngModel)]="libro.autorId" #txtEditarIdAutor>
+
+  <label for="selector">Selecciona un autor:</label>
+    <br>
+    <select class="custom-select form-control" [(ngModel)]="libro.idAutor">
+      <option *ngFor="let autor of autores" [value]="autor.id">Id: {{ autor.id }} - Nombre: {{ autor.nombre }} </option>
+    </select>
+  <br>
+  <label for="selector">Selecciona uno o varios generos:</label>
+  <br>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
+      Selecciona uno o varios generos
+    </button>
+    <div class="dropdown-menu" [class.show]="dropdownOpen">
+      <div *ngFor="let l of generos">
+        <label class="dropdown-item">
+          <input type="checkbox" [(ngModel)]="generoSeleccionado[l.id]" [value]="l.id"> Id: {{ l.id }} - Nombre: {{ l.nombre }}
+        </label>
+      </div>
+      <button class="btn btn-primary" (click)="cerrar()">Confirmar</button>
     </div>
   </div>
   <br>
-  <h3>Asignar Genero</h3>
-  <h6>Solo puedes asignar generos existentes</h6>
   <div class="row">
     <div class="col">
-      <input type="text" [placeholder]="'Id Genero'" class="form-control" [(ngModel)]="libro.generoId" #txtEditarIdGenero>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-primary" (click)="editar(libro.id, txtEditarTitulo.value, txtEditarAnoPublicacion.value, txtEditarIsbn.value, txtEditarIdAutor.value, txtEditarIdGenero.value)">Editar Libro</button>
+      <button class="btn btn-primary" (click)="confirmSelection(libro.id, txtEditarTitulo.value, txtEditarAnoPublicacion.value, txtEditarIsbn.value, libro.idAutor)">Editar Libro</button>
     </div>
   </div>
 </div>

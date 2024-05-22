@@ -1,4 +1,4 @@
-<div>
+<!--<div>
   <h2>Crear Libro</h2>
   <div class="row">
     <div class="col">
@@ -20,17 +20,70 @@
   </select>
   <br>
 
-
-  <label for="selector">Selecciona un genero:</label>
-  <br>
-  <select class="custom-select form-control" [(ngModel)]="generoSeleccionado">
-    <option *ngFor="let g of generos" [value]="g.id">Id: {{ g.id }} - Nombre: {{ g.nombre }} </option>
-  </select>
+  <label for="selector">Selecciona uno o varios generos:</label>
+              <br>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
+                  Selecciona uno o varios generos
+                </button>
+                <div class="dropdown-menu" [class.show]="dropdownOpen">
+                  <div *ngFor="let l of generos">
+                    <label class="dropdown-item">
+                      <input type="checkbox" [(ngModel)]="generoSeleccionado[l.id]" [value]="l.id"> Id: {{ l.id }} - Nombre: {{ l.nombre }}
+                    </label>
+                  </div>
+                  <button class="btn btn-primary" (click)="cerrar()">Confirmar</button>
+                </div>
+              </div>
 
   <br>
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary" (click)="crear(txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,autorSeleccionado,generoSeleccionado)">Crear Libro</button>
+      <button class="btn btn-primary" (click)="confirmSelection(txtTitulo.value,txtAnoPublicacion.value,txtIsbn.value,autorSeleccionado)">Crear Libro</button>
     </div>
   </div>
+</div>-->
+<div class="custom-modal-dialog">
+    <br>
+    <div class="row">
+      <div class="col">
+        <input type="text" [placeholder]="'Titulo'" class="form-control" #txtTitulo>
+      </div>
+      <div class="col">
+        <input type="text" [placeholder]="'Año Publicacion '" class="form-control" #txtAnoPublicacion>
+      </div>
+      <div class="col">
+        <input type="text" [placeholder]="'ISBN'" class="form-control" #txtIsbn>
+      </div>
+    </div>
+    <br>
+    <label for="selector">Selecciona un autor:</label>
+    <br>
+    <select class="custom-select form-control" [(ngModel)]="autorSeleccionado">
+      <option *ngFor="let autor of autores" [value]="autor.id">Id: {{ autor.id }} - Nombre: {{ autor.nombre }} </option>
+    </select>
+    <br>
+
+    <label for="selector">Selecciona uno o varios generos:</label>
+    <br>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
+        Selecciona uno o varios generos
+      </button>
+      <div class="dropdown-menu" [class.show]="dropdownOpen">
+        <div *ngFor="let l of generos">
+          <label class="dropdown-item">
+            <input type="checkbox" [(ngModel)]="generoSeleccionado[l.id]" [value]="l.id"> Id: {{ l.id }} - Nombre: {{ l.nombre }}
+          </label>
+        </div>
+        <button class="btn btn-primary" (click)="cerrar()">Confirmar</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" (click)="confirmSelection(txtTitulo.value, txtAnoPublicacion.value, txtIsbn.value, autorSeleccionado)">Crear Libro</button>
+      </div>
+    </div>
 </div>

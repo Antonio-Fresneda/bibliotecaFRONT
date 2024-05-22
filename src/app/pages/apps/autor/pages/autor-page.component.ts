@@ -45,7 +45,9 @@ export class AutorPageComponent implements OnInit {
       }
     );
 
-    this.txtValor.nativeElement.value = '';
+    if (this.txtValor && this.txtValor.nativeElement) {
+      this.txtValor.nativeElement.value = '';
+    }
   }
 
 

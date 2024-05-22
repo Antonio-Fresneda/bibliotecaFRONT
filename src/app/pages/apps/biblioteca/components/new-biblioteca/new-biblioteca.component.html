@@ -1,28 +1,28 @@
- <div class="custom-modal-dialog">
-  <br>
-              <div class="row">
-                <div class="col">
-                  <input type="text" [placeholder]="'Nombre Biblioteca'" class="form-control" #txtNombreBiblioteca>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Direccion '" class="form-control" #txtDireccion>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Telefono'" class="form-control" #txtTelefono>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Email'" class="form-control" #txtEmail>
-                </div>
-                <div class="col">
-                  <input type="text" [placeholder]="'Sitio Web'" class="form-control" #txtSitioWeb>
-                </div>
-              </div>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre Biblioteca'" class="form-control form-control-sm"  #txtNombreBiblioteca>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Direccion '" class="form-control form-control-sm" #txtDireccion>
+  </div>
+
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Telefono'" class="form-control form-control-sm"  #txtTelefono>
+  </div>
+
+  <div class="col">
+    <input type="text" [placeholder]="'Email'" class="form-control form-control-sm"  #txtEmail>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Sitio Web'" class="form-control form-control-sm"  #txtSitioWeb>
+  </div>
+</div>
               <br>
               <label for="selector">Selecciona uno o varios libros:</label>
               <br>
-              <!--<select class="custom-select form-control" [(ngModel)]="librosSeleccionados" multiple>
-                <option *ngFor="let l of libros" [value]="l.id">Id: {{ l.id }} - Nombre: {{ l.titulo }} </option>
-              </select>-->
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
                   Selecciona uno o varios libros
@@ -33,17 +33,14 @@
                       <input type="checkbox" [(ngModel)]="libroSeleccionado[l.id]" [value]="l.id"> Id: {{ l.id }} - Nombre: {{ l.titulo }}
                     </label>
                   </div>
-                  <button class="btn btn-primary" (click)="confirmSelection()">Confirmar</button>
+                  <button class="btn btn-primary" (click)="cerrar()">Confirmar</button>
                 </div>
               </div>
-
-
               <br>
-
               <br>
               <div class="row">
                 <div class="col">
-                  <button class="btn btn-primary" (click)="crear(txtNombreBiblioteca.value,txtDireccion.value,txtTelefono.value,txtEmail.value,txtSitioWeb.value,librosSeleccionados)">Crear Biblioteca</button>
+                  <button class="btn btn-primary" (click)="confirmSelection(txtNombreBiblioteca.value, txtDireccion.value, txtTelefono.value, txtEmail.value, txtSitioWeb.value)">Crear Biblioteca</button>
                 </div>
               </div>
-</div>
+

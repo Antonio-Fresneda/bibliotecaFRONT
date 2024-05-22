@@ -2,13 +2,29 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
+import { LoginPageComponent } from './pages/apps/login/pages/login-pages/login-page.component';
+import { RegistrarPageComponent } from './pages/apps/login/pages/registrar-pages/registrar-page.component';
+import { RolModule } from './pages/apps/rol/rol.module';
 
 export const Approutes: Routes = [
   {
     path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'registrar',
+    component: RegistrarPageComponent
+  },
+  {
+    path: '',
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
       {
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
@@ -41,11 +57,21 @@ export const Approutes: Routes = [
         loadChildren:()=>import('./pages/apps/biblioteca/biblioteca.module').then(m =>m.BibliotecaModule)
 
       },
+      {
+        path:'usuario',
+        loadChildren:()=>import('./pages/apps/login/login.module').then(m =>m.LoginModule)
+
+      },
+      {
+        path:'rol',
+        loadChildren:()=>import('./pages/apps/rol/rol.module').then(m =>m.RolModule)
+
+      },
     ]
   },
   {
     path: '**',
-    redirectTo: '/starter'
+    redirectTo: '/login'
   }
 ];
 @NgModule({

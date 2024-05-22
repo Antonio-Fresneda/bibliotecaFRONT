@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Libro } from '../interfaces/libro';
 
@@ -10,10 +10,11 @@ export class LibroService {
 
   constructor(private http: HttpClient) { }
 
-  searchLibro( ): Observable<Libro[]> {
-
+  searchLibro(): Observable<Libro[]> {
     const url = this.apiUrl;
-    return this.http.get<Libro[]>( url )
+    //const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Libro[]>(url);
   }
 
   contarLibros( ): Observable<number> {
@@ -28,7 +29,7 @@ export class LibroService {
     return this.http.get<Libro[]>( url )
   }
 
-  deleteLibroById(term:number): Observable<Libro[]> {
+  deleteLibroById(term:string): Observable<Libro[]> {
 
     const url = `${ this.apiUrl }/${ term }`;
     return this.http.delete<Libro[]>( url )
@@ -65,7 +66,10 @@ export class LibroService {
     return this.http.post<Libro[]>(url, body);
   }*/
 
-  crearLibro(titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero:string): Observable<Libro[]> {
+  crearLibro(titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGeneros:string[]): Observable<Libro[]> {
+
+    const generos = idGeneros.map(id => ({ id }));
+
     const body = {
       "titulo": titulo,
       "anoPublicacion": anoPublicacion,
@@ -73,16 +77,16 @@ export class LibroService {
       "autor": {
         "id": idAutor
       },
-      "genero": {
-        "id":idGenero
-      }
+      "generos": generos
     }
     return this.http.post<Libro[]>(this.apiUrl, body);
 
   }
 
-  editarLibro(term:number,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero:string): Observable<Libro[]> {
+  editarLibro(term:string,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGeneros:string[]): Observable<Libro[]> {
     const url = `${ this.apiUrl }/${ term }`;
+    const generos = idGeneros.map(id => ({ id }));
+
     const body = {
       "id": term,
       "titulo": titulo,
@@ -91,9 +95,7 @@ export class LibroService {
       "autor": {
         "id": idAutor
       },
-      "genero": {
-        "id": idGenero,
-      }
+      "generos": generos
     }
     return this.http.put<Libro[]>(url, body);
 

@@ -22,8 +22,11 @@ export class EditLibroComponent implements OnInit{
   public autorSeleccionado: string = '';
   public autores:Autor[]=[];
 
-  public generoSeleccionado: string = '';
+  public generoSeleccionado: { [id: string]: boolean } = {};
   public generos:Genero[]=[];
+
+  public dropdownOpen = false;
+
 
   constructor(
     private libroService:LibroService,
@@ -35,6 +38,7 @@ export class EditLibroComponent implements OnInit{
         this.libro=copy;
       }
   }
+
   ngOnInit() {
     this.busquedaInicialAutor();
     this.busquedaInicialGenero();
@@ -59,20 +63,33 @@ export class EditLibroComponent implements OnInit{
     );
     console.log(this.generos)
   }
-  editarLibro(term:number,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero:string): void {
-    this.libroService.editarLibro(term,titulo,anoPublicacion,isbn,idAutor,idGenero)
-      .subscribe(librosEditar => {
-        if (Array.isArray(librosEditar)) {
-          this.librosEditar = librosEditar;
-        } else {
-          this.librosEditar = [librosEditar];
-        }
-      });
+
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+  cerrar(): void {
+    this.dropdownOpen = false;
   }
 
-  editar(term:number,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero:string): void {
-    this.editarLibro(term,titulo,anoPublicacion,isbn,idAutor,idGenero);
-    location.reload()
+  confirmSelection(term:string,titulo:string,anoPublicacion:string,isbn:string,idAutor:string,): void {
+    const idsSeleccionados = Object.keys(this.generoSeleccionado).filter(id => this.generoSeleccionado[id]);
+    this.editarLibro(term,titulo,anoPublicacion,isbn,idAutor,idsSeleccionados);
+    location.reload();
+  }
+
+  editarLibro(term:string,titulo:string,anoPublicacion:string,isbn:string,idAutor:string, idsGeneros: string[]): void {
+    this.libroService.editarLibro(
+      term,titulo,anoPublicacion,isbn,idAutor,
+      idsGeneros)
+      .subscribe(librosEditar => {
+        this.librosEditar = librosEditar;
+      },error => {
+        console.error('Error al editar rol:', error);
+      }
+
+    );
+
+
   }
 
 

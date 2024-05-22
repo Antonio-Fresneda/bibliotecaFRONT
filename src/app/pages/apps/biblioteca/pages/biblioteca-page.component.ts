@@ -42,10 +42,13 @@ export class BiblitoecaPageComponent implements OnInit {
     this.bibliotecaService.searchBiblioteca().subscribe(
       bibliotecas => {
         this.bibliotecas = bibliotecas;
+        console.log(this.bibliotecas)
       }
     );
 
-    this.txtValor.nativeElement.value = '';
+    if (this.txtValor && this.txtValor.nativeElement) {
+      this.txtValor.nativeElement.value = '';
+    }
   }
 
   searchByBibliotecaId(term:string){

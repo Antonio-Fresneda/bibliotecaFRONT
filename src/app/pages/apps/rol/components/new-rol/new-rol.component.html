@@ -1,0 +1,34 @@
+
+<div class="custom-modal-dialog">
+    <br>
+    <div class="row">
+      <div class="col">
+        <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+      </div>
+
+    </div>
+    <br>
+
+    <label for="selector">Selecciona uno o varios permisos:</label>
+    <br>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
+        Selecciona uno o varios permisos
+      </button>
+      <div class="dropdown-menu" [class.show]="dropdownOpen">
+        <div *ngFor="let l of permisos">
+          <label class="dropdown-item">
+            <input type="checkbox" [(ngModel)]="permisosSeleccionado[l.id]" [value]="l.id"> Id: {{ l.id }} - Nombre: {{ l.nombre }}
+          </label>
+        </div>
+        <button class="btn btn-primary" (click)="cerrar()">Confirmar</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" (click)="confirmSelection(txtNombre.value)">Crear Libro</button>
+      </div>
+    </div>
+</div>

@@ -1,19 +1,25 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Libro } from '../../interfaces/libro';
 import { ModalService } from '@developer-partners/ngx-modal-dialog';
 import { DeleteLibroComponent } from '../delete-libro/delete-libro.component';
 import { EditLibroComponent } from '../edit-libro/edit-libro.component';
+import { GeneroService } from '../../../genero/services/genero.service';
+import { Genero } from '../../../genero/interfaces/genero';
 
 @Component({
   selector: 'libro-table',
   templateUrl: 'libro-table.component.html'
 })
 
-export class LibroTableComponent {
+export class LibroTableComponent  {
+
+  public generosNombre:Genero[]=[];
 
   constructor(
     private readonly _modalService:ModalService,
+    private generoService:GeneroService,
   ){}
+
 
 
   @Input()
@@ -44,6 +50,7 @@ export class LibroTableComponent {
       }
     });
   }
+
   editLibro(libro: Libro): void {
     this._modalService.show<Libro>(EditLibroComponent, {
       title: 'Editar Libro',
@@ -55,5 +62,10 @@ export class LibroTableComponent {
       }
     });
   }
+
+
+
+
+
 
 }

@@ -91,8 +91,8 @@ export class BibliotecaService {
 
   }
   */
-  editarBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,): Observable<Biblioteca[]> {
-
+  editarBiblioteca(term:string,nombreBiblioteca:string,direccion:string,telefono:string,email:string,sitioWeb:string,idLibros:string[]): Observable<Biblioteca[]> {
+    const libros = idLibros.map(id => ({ id }));
     const url = `${ this.apiUrl }/${ term }`
     const body = {
       "id": term,
@@ -100,7 +100,8 @@ export class BibliotecaService {
       "direccion": direccion,
       "telefono": telefono,
       "email": email,
-      "sitioWeb": sitioWeb
+      "sitioWeb": sitioWeb,
+      "libros": libros
   }
     return this.http.put<Biblioteca[]>(url, body);
 

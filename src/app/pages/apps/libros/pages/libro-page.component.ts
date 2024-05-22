@@ -5,6 +5,7 @@ import { NewLibroComponent } from '../components/new-libro/new-libro.component';
 import { ModalService } from '@developer-partners/ngx-modal-dialog';
 import { Autor } from '../../autor/interfaces/autor';
 
+
 @Component({
   selector: 'libro-page',
   templateUrl: 'libro-page.component.html',
@@ -36,6 +37,8 @@ export class LibroPageComponent implements OnInit {
 
 
 
+  private token: string = 'eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjb3JyZW9AZWplbXBsby5jb20iLCJleHAiOjE3MTU3NzAzOTJ9.L6beNhyabDeehTkzWsUafJBIRS67Uy5aJOw-3UUEyR3xd8VGN46s_voPau3dlcdQ';
+
   @ViewChild('txtValor') txtValor: any;
 
 
@@ -47,10 +50,16 @@ export class LibroPageComponent implements OnInit {
     this.libroService.searchLibro().subscribe(
       libros => {
         this.libros = libros;
+        console.log(this.libros);
+      },
+      error => {
+        console.error(error);
       }
     );
 
-    this.txtValor.nativeElement.value = '';
+    if (this.txtValor && this.txtValor.nativeElement) {
+      this.txtValor.nativeElement.value = '';
+    }
   }
 
   searchByLibroId(term:string){
@@ -100,7 +109,8 @@ export class LibroPageComponent implements OnInit {
 
   public createLibro():void{
     this._modalService.show<Libro>(NewLibroComponent,{
-      title:'Crear Libro'}
+      title:'Crear Libro'
+    }
     ).result()
       .subscribe(newGenero =>{
         this.libros?.push(newGenero);
@@ -124,6 +134,7 @@ export class LibroPageComponent implements OnInit {
   busqueda(busqueda:string): void {
     this.busquedaLibro(busqueda);
   }
+
 
 
 }

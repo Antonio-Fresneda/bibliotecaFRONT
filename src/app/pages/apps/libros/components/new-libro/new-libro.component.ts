@@ -20,9 +20,10 @@ export class NewLibroComponent implements OnInit {
   public autorSeleccionado: string = '';
   public autores:Autor[]=[];
 
-  public generoSeleccionado: string = '';
-  public generos:Genero[]=[];
+  public generos:Genero[]= [] ;
+  public generoSeleccionado: { [id: string]: boolean } = {};
 
+  public dropdownOpen = false;
 
   constructor(
     private libroService: LibroService,
@@ -44,7 +45,6 @@ export class NewLibroComponent implements OnInit {
       }
 
     );
-    console.log(this.autores)
   }
 
   busquedaInicialGenero(): void {
@@ -54,25 +54,31 @@ export class NewLibroComponent implements OnInit {
       }
 
     );
-    console.log(this.generos)
   }
 
-  crearLibro(titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero: string): void {
-    this.libroService.crearLibro(titulo,anoPublicacion,isbn,idAutor,idGenero)
+
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+  cerrar(): void {
+    this.dropdownOpen = false;
+  }
+
+  confirmSelection(titulo: string, anoPublicacion: string, isbn: string, idAutor: string): void {
+    const idsSeleccionados = Object.keys(this.generoSeleccionado).filter(id => this.generoSeleccionado[id]);
+    this.crearLibro(titulo, anoPublicacion, isbn, idAutor, idsSeleccionados);
+  }
+
+  crearLibro(titulo: string, anoPublicacion: string, isbn: string, idAutor: string, idsLibros: string[]): void {
+    this.libroService.crearLibro(
+      titulo, anoPublicacion, isbn, idAutor,
+      idsLibros)
       .subscribe(librosCrear => {
-        if (Array.isArray(librosCrear)) {
-          this.librosCrear = librosCrear;
-        } else {
-          this.librosCrear = [librosCrear];
-        }
-      }, error => {
+        this.librosCrear = librosCrear;
+      },error => {
         console.error('Error al crear libro:', error);
-      });
-  }
-
-  crear(titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGenero: string): void {
-    this.crearLibro(titulo,anoPublicacion,isbn,idAutor,idGenero);
-    console.log(titulo,anoPublicacion,isbn,idAutor,idGenero),
-    location.reload()
+      }
+    );
+    location.reload();
   }
 }

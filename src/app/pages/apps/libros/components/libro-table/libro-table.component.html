@@ -18,11 +18,11 @@
                 <thead>
                     <tr>
                       <th class="text-dark font-medium fs-4">Id</th>
-                      <th class="text-dark font-medium fs-4">Titulo</th>
-                      <th class="text-dark font-medium fs-4">Año Publicacion</th>
+                      <th class="text-dark font-medium fs-4">Título</th>
+                      <th class="text-dark font-medium fs-4">Año Publicación</th>
                       <th class="text-dark font-medium fs-4">ISBN</th>
-                      <th class="text-dark font-medium fs-4">Autor Id</th>
-                      <th class="text-dark font-medium fs-4">Genero Id</th>
+                      <th class="text-dark font-medium fs-4">Nombre Autor</th>
+                      <th class="text-dark font-medium fs-4">Nombre Genero</th>
                       <th class="text-dark font-medium fs-4">Acciones</th>
                     </tr>
                 </thead>
@@ -32,8 +32,8 @@
                     <td>{{l.titulo}}</td>
                     <td>{{l.anoPublicacion}}</td>
                     <td>{{l.isbn}}</td>
-                    <td>{{l.autorId}}</td>
-                    <td>{{l.generoId}}</td>
+                    <td>{{l.nombreAutor}}</td>
+                    <td>{{l.nombreGenero}}</td>
                     <td>
                       <button (click)="editLibro(l)"><img src="assets/images/icon/pencil.png"  width="20"  /></button>
                       <button (click)="deleteLibro(l)" ><img src="assets/images/icon/trash-can.png" width="20"/></button>

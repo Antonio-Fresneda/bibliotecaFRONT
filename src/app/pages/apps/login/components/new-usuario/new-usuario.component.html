@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Email'" class="form-control" #txtEmail>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Clave '" class="form-control" #txtClave>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Nombre'" class="form-control" #txtNombre>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <input type="text" [placeholder]="'Apellidos '" class="form-control" #txtApellidos>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Telefono'" class="form-control" #txtTelefono>
+  </div>
+  <div class="col">
+    <input type="text" [placeholder]="'Fecha Nacimiento'" class="form-control" #txtFechaNacimiento>
+  </div>
+</div>
+
+  <br>
+  <label for="selector">Selecciona un rol:</label>
+  <br>
+  <select class="custom-select form-control" [(ngModel)]="rolSeleccionado">
+    <option *ngFor="let rol of rol" [value]="rol.nombre">Id: {{ rol.id }} - Nombre: {{ rol.nombre }} </option>
+  </select>
+  <br>
+
+
+<br>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="crear(txtEmail.value,txtClave.value,txtNombre.value, txtApellidos.value, txtTelefono.value,txtFechaNacimiento.value,rolSeleccionado)">Crear Usuario</button>
+  </div>
+</div>

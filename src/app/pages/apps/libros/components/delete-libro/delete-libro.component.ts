@@ -24,7 +24,7 @@ export class DeleteLibroComponent  {
       }
 
   }
-  deletedByLibroId(term:number){
+  deletedByLibroId(term:string){
     this.libroService.deleteLibroById(term).subscribe(libroId => {
       if (Array.isArray(libroId)) {
         this.libroBorrar = libroId;

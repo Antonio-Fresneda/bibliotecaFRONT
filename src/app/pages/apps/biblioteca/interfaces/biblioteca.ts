@@ -5,4 +5,5 @@ export interface Biblioteca {
   telefono: string;
   email:string;
   sitioWeb:string;
+  libros:string
 }
