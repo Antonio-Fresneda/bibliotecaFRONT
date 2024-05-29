@@ -18,3 +18,9 @@
 .form-container img {
   margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
 }
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}

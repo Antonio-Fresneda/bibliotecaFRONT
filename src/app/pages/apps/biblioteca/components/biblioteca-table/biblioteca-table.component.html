@@ -23,7 +23,7 @@
                       <th class="text-dark font-medium fs-4">Email</th>
                       <th class="text-dark font-medium fs-4">Sitio Web</th>
                       <th class="text-dark font-medium fs-4">Libros</th>
-                      <th class="text-dark font-medium fs-4">Acciones</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_BIBLIOTECA'" >Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,8 +36,8 @@
                     <td>{{b.sitioWeb}}</td>
                     <td>{{b.libros}}</td>
                     <td>
-                      <button (click)="editBiblioteca(b)"><img src="assets/images/icon/pencil.png"  width="20"  /></button>
-                      <button (click)="deleteBiblioteca(b)"><img src="assets/images/icon/trash-can.png" width="20"/></button>
+                      <button (click)="editBiblioteca(b)" *appHasPermiso="'ESCRIBIR_BIBLIOTECA'" ><img src="assets/images/icon/pencil.png"  width="20"  /></button>
+                      <button (click)="deleteBiblioteca(b)" *appHasPermiso="'ESCRIBIR_BIBLIOTECA'" ><img src="assets/images/icon/trash-can.png" width="20"/></button>
                     </td>
                   </tr>
                 </tbody>

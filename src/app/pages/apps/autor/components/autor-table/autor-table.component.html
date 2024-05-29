@@ -20,7 +20,7 @@
                       <th class="text-dark font-medium fs-4">Nombre</th>
                       <th class="text-dark font-medium fs-4">Fecha Nacimiento</th>
                       <th class="text-dark font-medium fs-4">Nacionalidad</th>
-                      <th class="text-dark font-medium fs-4">Acciones</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_AUTOR '" >Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +30,8 @@
                     <td>{{autor.fechaNacimiento}}</td>
                     <td>{{autor.nacionalidad}}</td>
                     <td>
-                      <button  (click)="editAutor(autor)"><img src="assets/images/icon/pencil.png"  width="20"  /></button>
-                      <button (click)="deleteAutor(autor)"><img src="assets/images/icon/trash-can.png" width="20"/></button>
+                      <button  (click)="editAutor(autor)" *appHasPermiso="'ESCRIBIR_AUTOR '" ><img src="assets/images/icon/pencil.png"  width="20"  /></button>
+                      <button (click)="deleteAutor(autor)" *appHasPermiso="'ESCRIBIR_AUTOR '" ><img src="assets/images/icon/trash-can.png" width="20"/></button>
                     </td>
                 </tr>
                 </tbody>

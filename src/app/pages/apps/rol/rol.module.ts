@@ -11,6 +11,8 @@ import { RolTableComponent } from './components/rol-table/rol-table.component';
 import { RolPageComponent } from './pages/rol-page.component';
 import { NewRolComponent } from './components/new-rol/new-rol.component';
 import { EditRolComponent } from './components/edit-rol/edit-rol.component';
+import { HasPermisoDirective } from './has-permiso.directive';
+import { SharedModule } from './shared.module';
 
 
 
@@ -19,7 +21,8 @@ import { EditRolComponent } from './components/edit-rol/edit-rol.component';
     RolTableComponent,
     RolPageComponent,
     NewRolComponent,
-    EditRolComponent
+    EditRolComponent,
+
 
   ],
   imports: [
@@ -33,7 +36,8 @@ import { EditRolComponent } from './components/edit-rol/edit-rol.component';
     NgIf,
     NgbAlertModule,
     NgbPaginationModule,
-    ModalModule
+    ModalModule,
+    SharedModule
   ]
 
 })

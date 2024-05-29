@@ -12,6 +12,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { EditLibroComponent } from './components/edit-libro/edit-libro.component';
 import { NewLibroComponent } from './components/new-libro/new-libro.component';
+import { HasPermisoDirective } from '../rol/has-permiso.directive';
+import { SharedModule } from '../rol/shared.module';
 
 
 
@@ -21,7 +23,8 @@ import { NewLibroComponent } from './components/new-libro/new-libro.component';
    LibroTableComponent,
    LibroTableFiltrosComponent,
    EditLibroComponent,
-   NewLibroComponent
+   NewLibroComponent,
+
 
 
   ],
@@ -37,7 +40,8 @@ import { NewLibroComponent } from './components/new-libro/new-libro.component';
     NgIf,
     NgbAlertModule,
     NgbPaginationModule,
-    ModalModule
+    ModalModule,
+    SharedModule
   ]
 
 })

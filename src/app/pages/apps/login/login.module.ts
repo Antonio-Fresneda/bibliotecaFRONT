@@ -11,6 +11,7 @@ import { UsuarioTableComponent } from './components/usuario-table/usuario-table.
 import { UsuarioPageComponent } from './pages/usuario-pages/usuario-page.component';
 import { NewUsuarioComponent } from './components/new-usuario/new-usuario.component';
 import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.component';
+import { SharedModule } from '../rol/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.com
     UsuarioTableComponent,
     UsuarioPageComponent,
     NewUsuarioComponent,
-    EditUsuarioComponent
+    EditUsuarioComponent,
+
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,9 @@ import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.com
     NgIf,
     NgbAlertModule,
     NgbPaginationModule,
-    ModalModule
+    ModalModule,
+    SharedModule
+
   ]
 
 })

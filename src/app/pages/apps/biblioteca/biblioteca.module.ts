@@ -12,6 +12,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { EditBibliotecaComponent } from './components/edit-biblioteca/edit-biblio.component';
 import { NewBibliotecaComponent } from './components/new-biblioteca/new-biblioteca.component';
+import { SharedModule } from '../rol/shared.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NewBibliotecaComponent } from './components/new-biblioteca/new-bibliote
     NgIf,
     NgbAlertModule,
     NgbPaginationModule,
-    ModalModule
+    ModalModule,
+    SharedModule
 
   ]
 

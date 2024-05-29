@@ -41,7 +41,7 @@ export class LibroTableComponent  {
 
   deleteLibro(libro: Libro): void {
     this._modalService.show<Libro>(DeleteLibroComponent, {
-      title: 'Borrar Autor',
+      title: 'Borrar Libro',
       model: libro,
     }).result().subscribe(borrarLibro => {
       const index = this.libros?.findIndex(g => g.id === libro.id);

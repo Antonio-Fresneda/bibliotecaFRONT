@@ -1,24 +1,13 @@
 <h1>Lista Usuarios</h1>
 <hr>
-<!--<div class="row">
-  <div class="col">
-    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor >
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col">
-    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
-  </div>
-</div>-->
-<br>
-<div class="row">
-  <div class="col">
 
+<br>
+<div class="row">
+  <div class="col" *appHasPermiso="'ESCRIBIR_USUARIOS || LEER_USUARIOS'">
       <usuario-table [usuarios]="usuarios"></usuario-table>
   </div>
 </div>
-<div class="floating-button">
+<div class="floating-button" *appHasPermiso="'ESCRIBIR_USUARIOS'">
   <button (click)="createUsuario()" ><img src="assets/images/icon/plus.png"  width="50"/></button>
 </div>
 

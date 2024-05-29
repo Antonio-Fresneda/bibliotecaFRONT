@@ -11,6 +11,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { EditGeneroComponent } from './components/edit-genero/edit-genero.component';
+import { SharedModule } from '../rol/shared.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { EditGeneroComponent } from './components/edit-genero/edit-genero.compon
     NgIf,
     NgbAlertModule,
     NgbPaginationModule,
-    ModalModule
+    ModalModule,
+    SharedModule
   ]
 
 })

@@ -11,25 +11,25 @@ export const topcards: topcard[] = [
     bgcolor: 'success',
     icon: 'bi bi-book',
     title: 'Libros',
-    subtitle: '10 disponibles'
+    subtitle: '3 disponibles'
   } ,
   {
     bgcolor: 'danger',
     icon: 'bi bi-journal-bookmark',
     title: 'Generos',
-    subtitle: '9 disponibles'
+    subtitle: '4 disponibles'
   },
   {
     bgcolor: 'warning',
     icon: 'bi bi-people',
     title: 'Autores',
-    subtitle: '11 disponibles'
+    subtitle: '2 disponibles'
   },
   {
     bgcolor: 'info',
     icon: 'bi bi-bookshelf',
     title: 'Bibliotecas',
-    subtitle: '8 disponibles'
+    subtitle: '1 disponibles'
   },
     /*{
         bgcolor: 'success',

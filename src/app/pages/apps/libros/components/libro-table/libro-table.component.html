@@ -1,5 +1,4 @@
 <style>
-  /* Eliminar el borde y el fondo del botón */
   button {
       border: none;
       background: none;
@@ -23,7 +22,7 @@
                       <th class="text-dark font-medium fs-4">ISBN</th>
                       <th class="text-dark font-medium fs-4">Nombre Autor</th>
                       <th class="text-dark font-medium fs-4">Nombre Genero</th>
-                      <th class="text-dark font-medium fs-4">Acciones</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_LIBROS'" >Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,8 +34,8 @@
                     <td>{{l.nombreAutor}}</td>
                     <td>{{l.nombreGenero}}</td>
                     <td>
-                      <button (click)="editLibro(l)"><img src="assets/images/icon/pencil.png"  width="20"  /></button>
-                      <button (click)="deleteLibro(l)" ><img src="assets/images/icon/trash-can.png" width="20"/></button>
+                      <button (click)="editLibro(l)"><img src="assets/images/icon/pencil.png"  width="20" *appHasPermiso="'ESCRIBIR_LIBROS'" /></button>
+                      <button (click)="deleteLibro(l)" ><img src="assets/images/icon/trash-can.png" width="20" *appHasPermiso="'ESCRIBIR_LIBROS'" /></button>
                     </td>
                   </tr>
                 </tbody>

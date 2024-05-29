@@ -14,6 +14,7 @@ import { ComponentsModule } from 'src/app/layouts/component/component.module';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { NewAutorComponent } from './components/new-autor/new-autor.component';
 import { EditAutorComponent } from './components/edit-autor/edit-autor.component';
+import { SharedModule } from '../rol/shared.module';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { EditAutorComponent } from './components/edit-autor/edit-autor.component
     NgIf,
     NgbAlertModule,
     NgbPaginationModule,
-    ModalModule
+    ModalModule,
+    SharedModule
   ]
 })
 export class AutorModule { }
