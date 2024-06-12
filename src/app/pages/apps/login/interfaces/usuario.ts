@@ -5,7 +5,7 @@ export interface Usuario {
   nombre: string;
   apellidos?:string;
   telefono:string;
-  fechaNacimiento:string;
+  fechaNacimiento:string|Date;
   rol:string
 
 }

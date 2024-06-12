@@ -4,6 +4,9 @@ import { LibroService } from '../services/libro.service';
 import { NewLibroComponent } from '../components/new-libro/new-libro.component';
 import { ModalService } from '@developer-partners/ngx-modal-dialog';
 import { Autor } from '../../autor/interfaces/autor';
+import { DialogService } from '../../error/dialog.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -19,15 +22,28 @@ export class LibroPageComponent implements OnInit {
   public librosBusqueda:Libro[]=[]
   public librosCrear:Libro[]=[];
 
+  private translateSubscription: Subscription | null = null;;
+
   constructor(
     private libroService: LibroService,
-    private readonly _modalService:ModalService
+    private readonly _modalService:ModalService,
+    private dialogService: DialogService,
+    private translate :TranslateService
   ) { }
 
   @ViewChild('txtValor') txtValor: any;
   ngOnInit(): void {
    this.busquedaInicial();
-  }
+   this.translateSubscription = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    this.updateTranslations();
+  });
+
+  this.updateTranslations();
+}
+
+private updateTranslations() {
+  this.libros = [...this.libros];
+}
   public createLibro():void{
     this._modalService.show<Libro>(NewLibroComponent,{
       title:'Crear Libro'
@@ -43,10 +59,12 @@ export class LibroPageComponent implements OnInit {
     this.libroService.searchLibro().subscribe(
       libros => {
         this.libros = libros;
-        console.log(this.libros);
-      },
+
+      } ,
       error => {
-        console.error(error);
+        if (error.status === 403) {
+          this.dialogService.openErrorDialog('Error 403 Forbidden: No tienes acceso a este recurso.');
+        }
       }
     );
 

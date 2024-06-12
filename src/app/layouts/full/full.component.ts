@@ -4,13 +4,14 @@ import { Router, RouterModule } from "@angular/router";
 import { NavigationComponent } from "src/app/@fury/shared/header/navigation.component";
 import { SidebarComponent } from "src/app/@fury/shared/sidebar/sidebar.component";
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from "src/app/pages/apps/rol/shared.module";
 
 //declare var $: any;
 
 @Component({
   selector: "app-full-layout",
   standalone: true,
-  imports:[RouterModule, SidebarComponent, NavigationComponent, CommonModule, NgbCollapseModule],
+  imports:[RouterModule, SidebarComponent, SharedModule, CommonModule, NgbCollapseModule],
   templateUrl: "./full.component.html",
   styleUrls: ["./full.component.scss"],
 })

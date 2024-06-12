@@ -10,12 +10,13 @@ import { AutorTableFiltrosPostComponent } from './components/autor-table-filtros
 import { NgbNavModule,  NgbDropdownModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor, NgIf } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { ComponentsModule } from 'src/app/layouts/component/component.module';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { NewAutorComponent } from './components/new-autor/new-autor.component';
 import { EditAutorComponent } from './components/edit-autor/edit-autor.component';
 import { SharedModule } from '../rol/shared.module';
-
+import { TranslateModule, } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
+import { DeleteAutorComponent } from './components/delete-autor/delete-autor.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,12 @@ import { SharedModule } from '../rol/shared.module';
     AutorTableFiltrosPostComponent,
     AutorPageComponent,
     NewAutorComponent,
-    EditAutorComponent
+    EditAutorComponent,
+    DeleteAutorComponent
   ],
   imports: [
     CommonModule,
     AutorRoutingModule,
-    ComponentsModule,
     FormsModule,
     NgbNavModule,
     NgbDropdownModule,
@@ -39,7 +40,9 @@ import { SharedModule } from '../rol/shared.module';
     NgbAlertModule,
     NgbPaginationModule,
     ModalModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    TranslateModule.forChild()
   ]
 })
 export class AutorModule { }

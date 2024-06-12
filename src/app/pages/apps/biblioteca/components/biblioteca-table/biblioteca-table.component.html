@@ -11,19 +11,19 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Bibliotecas disponibles</h4>
+          <h4 class="card-title">{{titulo}}</h4>
           <div class="table-responsive">
             <table class="table align-middle text-nowrap">
                 <thead>
                     <tr>
                       <th class="text-dark font-medium fs-4">Id</th>
-                      <th class="text-dark font-medium fs-4">Nombre</th>
-                      <th class="text-dark font-medium fs-4">Direccion</th>
-                      <th class="text-dark font-medium fs-4">Telefono</th>
+                      <th class="text-dark font-medium fs-4">{{columnaNombre}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaDireccion}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaTelefono}}</th>
                       <th class="text-dark font-medium fs-4">Email</th>
-                      <th class="text-dark font-medium fs-4">Sitio Web</th>
-                      <th class="text-dark font-medium fs-4">Libros</th>
-                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_BIBLIOTECA'" >Acciones</th>
+                      <th class="text-dark font-medium fs-4">{{columnaSitioWeb}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaLibros}}</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_BIBLIOTECA'" >{{columnaAcciones}}</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,10 +1,18 @@
-<h1>Lista Usuarios</h1>
+<h1>{{'Lista_Usuarios'|translate}}</h1>
 <hr>
 
 <br>
 <div class="row">
   <div class="col" *appHasPermiso="'ESCRIBIR_USUARIOS || LEER_USUARIOS'">
-      <usuario-table [usuarios]="usuarios"></usuario-table>
+      <usuario-table [usuarios]="usuarios"
+      [titulo]="'Usuarios_Disponibles'|translate"
+      [columnaNombre]="'Nombre'|translate"
+      [columnaApellidos]="'Apellidos'|translate"
+      [columnaTelefono]="'Telefono'|translate"
+      [columnaFecha]="'Fecha_Nacimiento'|translate"
+      [columnaRol]="'Rol'|translate"
+      [columnaAcciones]="'Acciones'|translate">
+      ></usuario-table>
   </div>
 </div>
 <div class="floating-button" *appHasPermiso="'ESCRIBIR_USUARIOS'">

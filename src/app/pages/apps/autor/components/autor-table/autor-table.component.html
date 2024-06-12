@@ -1,5 +1,5 @@
 <style>
-  /* Eliminar el borde y el fondo del botón */
+
   button {
       border: none;
       background: none;
@@ -11,23 +11,23 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Autores disponibles</h4>
+          <h4 class="card-title">{{titulo}}</h4>
           <div class="table-responsive">
             <table class="table align-middle text-nowrap">
                 <thead>
                     <tr>
                       <th class="text-dark font-medium fs-4">Id</th>
-                      <th class="text-dark font-medium fs-4">Nombre</th>
-                      <th class="text-dark font-medium fs-4">Fecha Nacimiento</th>
-                      <th class="text-dark font-medium fs-4">Nacionalidad</th>
-                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_AUTOR '" >Acciones</th>
+                      <th class="text-dark font-medium fs-4">{{columnaNombre}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaFecha}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaNacionalidad}}</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_AUTOR '" >{{columnaAcciones}}</th>
                     </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor='let autor of paginatedAutores'>
                     <td>{{autor.id}}</td>
                     <td>{{autor.nombre}}</td>
-                    <td>{{autor.fechaNacimiento}}</td>
+                    <td>{{formatFecha(autor.fechaNacimiento)}}</td>
                     <td>{{autor.nacionalidad}}</td>
                     <td>
                       <button  (click)="editAutor(autor)" *appHasPermiso="'ESCRIBIR_AUTOR '" ><img src="assets/images/icon/pencil.png"  width="20"  /></button>

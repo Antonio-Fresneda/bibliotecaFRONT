@@ -15,6 +15,11 @@ import { DeleteRolComponent } from '../delete-rol/delete-rol.component';
 
 export class RolTableComponent {
 
+  @Input() titulo: string = '';
+  @Input() columnaNombre: string = '';
+  @Input() columnaPermisos: string = '';
+  @Input() columnaAcciones: string = '';
+
   constructor(
     private readonly _modalService:ModalService,
   ){}

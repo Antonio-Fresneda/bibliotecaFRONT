@@ -13,6 +13,13 @@ import { Genero } from '../../../genero/interfaces/genero';
 
 export class LibroTableComponent  {
 
+  @Input() titulo: string = '';
+  @Input() columnaTitulo: string = '';
+  @Input() columnaAno: string = '';
+  @Input() columnaAutor: string = '';
+  @Input() columnaGenero: string = '';
+  @Input() columnaAcciones: string = '';
+
   public generosNombre:Genero[]=[];
 
   constructor(

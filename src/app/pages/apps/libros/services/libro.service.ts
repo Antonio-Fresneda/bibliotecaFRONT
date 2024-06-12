@@ -25,6 +25,7 @@ export class LibroService {
     return this.http.delete<Libro[]>( url,{headers} )
 
   }
+
   crearLibro(titulo:string,anoPublicacion:string,isbn:string,idAutor:string,idGeneros:string[]): Observable<Libro[]> {
     const token = this.loginService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

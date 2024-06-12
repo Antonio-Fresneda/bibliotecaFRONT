@@ -11,18 +11,18 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Libros disponibles</h4>
+          <h4 class="card-title">{{titulo}}</h4>
           <div class="table-responsive">
             <table class="table align-middle text-nowrap">
                 <thead>
                     <tr>
                       <th class="text-dark font-medium fs-4">Id</th>
-                      <th class="text-dark font-medium fs-4">Título</th>
-                      <th class="text-dark font-medium fs-4">Año Publicación</th>
+                      <th class="text-dark font-medium fs-4">{{columnaTitulo}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaAno}}</th>
                       <th class="text-dark font-medium fs-4">ISBN</th>
-                      <th class="text-dark font-medium fs-4">Nombre Autor</th>
-                      <th class="text-dark font-medium fs-4">Nombre Genero</th>
-                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_LIBROS'" >Acciones</th>
+                      <th class="text-dark font-medium fs-4">{{columnaAutor}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaGenero}}</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_LIBROS'" >{{columnaAcciones}}</th>
                     </tr>
                 </thead>
                 <tbody>

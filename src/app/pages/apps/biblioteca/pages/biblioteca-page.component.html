@@ -1,14 +1,14 @@
-<h1>Lista Bibliotecas</h1>
+<h1>{{'Lista_Biblioteca'|translate}}</h1>
 <hr>
 <div class="row" *appHasPermiso="'ESCRIBIR_BIBLIOTECA || LEER_BIBLIOTECA  '">
   <div class="col">
-    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+    <input type="text" [placeholder]="'Valor_de_Busqueda'|translate" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
   </div>
 </div>
 <br>
 <div class="row" *appHasPermiso="'ESCRIBIR_BIBLIOTECA || LEER_BIBLIOTECA  '" >
   <div class="col">
-    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
+    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i>{{ 'Limpiar'| translate }} </button>
   </div>
 </div>
 
@@ -16,7 +16,14 @@
 <div class="row" *appHasPermiso="'ESCRIBIR_BIBLIOTECA || LEER_BIBLIOTECA  '" >
   <div class="col">
     <hr>
-      <biblioteca-table [bibliotecas]="bibliotecas"></biblioteca-table>
+      <biblioteca-table [bibliotecas]="bibliotecas"
+      [titulo]="'Bibliotecas_Disponibles'|translate"
+      [columnaNombre]="'Nombre'|translate"
+      [columnaDireccion]="'Direccion'|translate"
+      [columnaTelefono]="'Telefono'|translate"
+      [columnaSitioWeb]="'SitioWeb'|translate"
+      [columnaLibros]="'Libros'|translate"
+      [columnaAcciones]="'Acciones'|translate"></biblioteca-table>
   </div>
 </div>
 

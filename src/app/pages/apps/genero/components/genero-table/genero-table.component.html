@@ -5,23 +5,24 @@
       background: none;
       padding: 0;
       margin-right: 10px;
+
   }
 </style>
      <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Géneros disponibles</h4>
+              <h4 class="card-title">{{titulo}}</h4>
               <div class="table-responsive">
                 <table class="table align-middle text-nowrap">
                   <thead>
                     <tr>
                       <th class="text-dark font-medium fs-4">Id</th>
-                      <th class="text-dark font-medium fs-4">Nombre</th>
-                      <th class="text-dark font-medium fs-4">Descripción</th>
-                      <th class="text-dark font-medium fs-4">Edad Recomendada</th>
-                      <th class="text-dark font-medium fs-4">urlWikipedia</th>
-                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_GENERO'" >Acciones</th>
+                      <th class="text-dark font-medium fs-4">{{columnaNombre}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaDescripcion}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaEdadRecomendada}}</th>
+                      <th class="text-dark font-medium fs-4">{{columnaUrlWikipedia}}</th>
+                      <th class="text-dark font-medium fs-4" *appHasPermiso="'ESCRIBIR_GENERO'">{{columnaAcciones}}</th>
                     </tr>
                   </thead>
                   <tbody>

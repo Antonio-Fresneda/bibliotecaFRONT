@@ -11,7 +11,13 @@ import { EditBibliotecaComponent } from '../edit-biblioteca/edit-biblio.componen
 
 export class BibliotecaTableComponent {
 
-
+  @Input() titulo: string = '';
+  @Input() columnaNombre: string = '';
+  @Input() columnaDireccion: string = '';
+  @Input() columnaTelefono: string = '';
+  @Input() columnaSitioWeb: string = '';
+  @Input() columnaLibros: string = '';
+  @Input() columnaAcciones: string = '';
   constructor(
     private readonly _modalService:ModalService,
   ){}

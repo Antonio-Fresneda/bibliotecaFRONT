@@ -79,14 +79,14 @@ export const ROUTES: RouteInfo[] = [
   },
   */{
     path: '/autor',
-    title: 'Autor',
+    title: 'Autores',
     icon: 'bi bi-people',
     class: '',
     extralink: false,
     submenu: []
   },{
     path: '/genero',
-    title: 'Genero',
+    title: 'Generos',
     icon: 'bi bi-journal-bookmark',
     class: '',
     extralink: false,
@@ -94,7 +94,7 @@ export const ROUTES: RouteInfo[] = [
   }
   ,{
     path: '/libros',
-    title: 'Libro',
+    title: 'Libros',
     icon: 'bi bi-book',
     class: '',
     extralink: false,
@@ -102,7 +102,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/biblioteca',
-    title: 'Biblioteca',
+    title: 'Bibliotecas',
     icon: 'bi bi-bookshelf',
     class: '',
     extralink: false,

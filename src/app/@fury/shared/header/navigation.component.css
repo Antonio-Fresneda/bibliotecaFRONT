@@ -1,0 +1,26 @@
+.nav-item a img {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item a img:hover {
+  cursor: pointer;
+}
+.flag-button {
+  display: inline-block;
+  margin-right: 10px; /* Puedes ajustar este valor para separar los botones */
+  text-align: center; /* Centra el contenido dentro del div */
+}
+
+.flag-button img {
+  display: block;
+  margin: 0 auto; /* Centra la imagen horizontalmente dentro del div */
+}
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-right: 10px;
+}

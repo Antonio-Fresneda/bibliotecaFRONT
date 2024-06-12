@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing';
 import { NgbNavModule, NgbDropdownModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
@@ -12,10 +12,12 @@ import { UsuarioPageComponent } from './pages/usuario-pages/usuario-page.compone
 import { NewUsuarioComponent } from './components/new-usuario/new-usuario.component';
 import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.component';
 import { SharedModule } from '../rol/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
 @NgModule({
+  providers: [DatePipe],
   declarations: [
     LoginPageComponent,
     UsuarioTableComponent,
@@ -36,7 +38,8 @@ import { SharedModule } from '../rol/shared.module';
     NgbAlertModule,
     NgbPaginationModule,
     ModalModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forChild()
 
   ]
 

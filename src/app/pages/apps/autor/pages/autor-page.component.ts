@@ -3,6 +3,9 @@ import { Autor } from '../interfaces/autor';
 import { AutorService } from '../services/autor.service';
 import { ModalService } from '@developer-partners/ngx-modal-dialog';
 import { NewAutorComponent } from '../components/new-autor/new-autor.component';
+import { DialogService } from '../../error/dialog.service';
+import { Subscription } from 'rxjs';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'autor-page',
@@ -27,15 +30,40 @@ export class AutorPageComponent implements OnInit {
 
   public autoresBusqueda:Autor[]=[]
 
+  private translateSubscription: Subscription | null = null;
+
   constructor(
     private autorService: AutorService,
-    private readonly _modalService:ModalService
+    private readonly _modalService:ModalService,
+    private dialogService: DialogService,
+    private translate: TranslateService,
   ) { }
 
 
   ngOnInit(): void {
-    this.busquedaInicial();
+    this.autorService.searchAutor().subscribe(
+      autores => {
+        this.autores = autores;
+
+      }, error => {
+        if (error.status === 403) {
+          this.dialogService.openErrorDialog('Error 403 Forbidden: No tienes acceso a este recurso.');
+        }
+      }
+    );
+
+
+    this.translateSubscription = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.updateTranslations();
+    });
+
+    this.updateTranslations();
   }
+
+  private updateTranslations() {
+    this.autores = [...this.autores];
+  }
+
   @ViewChild('txtValor') txtValor: any;
 
   busquedaInicial(): void {
@@ -43,7 +71,9 @@ export class AutorPageComponent implements OnInit {
       autores => {
         this.autores = autores;
       }
+
     );
+
 
     if (this.txtValor && this.txtValor.nativeElement) {
       this.txtValor.nativeElement.value = '';
@@ -68,7 +98,6 @@ export class AutorPageComponent implements OnInit {
       } else {
         this.autoresId = [autoresId];
       }
-      console.log(autoresId)
       location.reload()
     });
   }
@@ -85,34 +114,12 @@ export class AutorPageComponent implements OnInit {
     });
 
 
-}
-
+  }
   emitValue(nombre?: string, fechaNacimiento?: string, nacionalidad?: string,direccion?:string): void {
     this.searchAutores(nombre, fechaNacimiento, nacionalidad,direccion);
     console.log(nombre, fechaNacimiento, nacionalidad,direccion);
   }
 
-
-
-
-  /*busquedaAutor(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): void {
-    this.autorService.busquedaAutor(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize)
-      .subscribe(autoresBusqueda => {
-        if (Array.isArray(autoresBusqueda)) {
-          this.autoresBusqueda = autoresBusqueda;
-        } else {
-          this.autoresBusqueda = [autoresBusqueda];
-        }
-      }, error => {
-        console.error('Error al encontrar autor:', error);
-      });
-  }
-
-  busqueda(sortBy: string, valueSortOrder: string, key: string, operation: string,value:string,pageIndex:string,pageSize:string): void {
-    this.busquedaAutor(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize);
-    console.log(sortBy,valueSortOrder,key,operation,value,pageIndex,pageSize);
-
-  }*/
   busquedaAutor(busqueda:string): void {
     this.autorService.busquedaAutor(busqueda)
       .subscribe(autores => {
@@ -129,8 +136,6 @@ export class AutorPageComponent implements OnInit {
   busqueda(busqueda:string): void {
     this.busquedaAutor(busqueda);
   }
-
-
 
   public createAutor():void{
     this._modalService.show<Autor>(NewAutorComponent,{

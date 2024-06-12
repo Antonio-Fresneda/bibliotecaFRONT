@@ -1,21 +1,27 @@
-<h1>Lista Libros</h1>
+<h1>{{'Lista_Libros'|translate}}</h1>
 <hr>
 <div class="row" *appHasPermiso="'ESCRIBIR_LIBROS || LEER_LIBROS'">
   <div class="col">
-    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+    <input type="text" [placeholder]="'Valor_de_Busqueda'|translate" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
   </div>
 </div>
 <br>
 <div class="row" *appHasPermiso="'ESCRIBIR_LIBROS || LEER_LIBROS'">
   <div class="col">
-    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
+    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> {{ 'Limpiar'| translate }}</button>
   </div>
 </div>
 <br>
 <div class="row" *appHasPermiso="'ESCRIBIR_LIBROS || LEER_LIBROS'">
   <div class="col">
     <hr>
-    <libro-table [libros]="libros"></libro-table>
+    <libro-table [libros]="libros"
+    [titulo]="'Libros_Disponibles'|translate"
+    [columnaTitulo]="'Titulo'|translate"
+    [columnaAno]="'Ano_Publicacion'|translate"
+    [columnaAutor]="'Nombre_Autor'|translate"
+    [columnaGenero]="'Nombre_Genero'|translate"
+    [columnaAcciones]="'Acciones'|translate"></libro-table>
   </div>
 </div>
 <div class="floating-button" *appHasPermiso="'ESCRIBIR_LIBROS'">

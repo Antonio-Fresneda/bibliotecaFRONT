@@ -18,6 +18,14 @@ export class GeneroTableComponent {
     private readonly _modalService:ModalService,
   ){}
 
+  @Input() titulo: string = '';
+  @Input() columnaId: string = '';
+  @Input() columnaNombre: string = '';
+  @Input() columnaDescripcion: string = '';
+  @Input() columnaEdadRecomendada: string = '';
+  @Input() columnaUrlWikipedia: string = '';
+  @Input() columnaAcciones: string = '';
+
   @Input()
   public generos:Genero[]=[];
 

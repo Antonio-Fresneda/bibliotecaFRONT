@@ -1,9 +1,12 @@
-<h1>Lista Rol</h1>
+<h1>{{'Lista_Roles'|translate}}</h1>
 <hr>
 <br>
 <div class="row">
   <div class="col" *appHasPermiso="'ESCRIBIR_ROL || LEER_ROL'">
-      <rol-table [rol]="rol"></rol-table>
+      <rol-table [rol]="rol"  [titulo]="'Roles_Disponibles'|translate"
+      [columnaNombre]="'Nombre'|translate"
+      [columnaPermisos]="'Permisos'|translate"
+      [columnaAcciones]="'Acciones'|translate"></rol-table>
   </div>
 </div>
 <div class="floating-button">

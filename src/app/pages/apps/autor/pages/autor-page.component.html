@@ -1,21 +1,26 @@
-<h1>Lista Autores</h1>
+<h1>{{'Lista_Autores'|translate}}</h1>
 <hr>
 <div class="row"  *appHasPermiso="'ESCRIBIR_AUTOR || LEER_AUTOR  '" >
   <div class="col">
-    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+    <input type="text" [placeholder]="'Valor_de_Busqueda'|translate" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
   </div>
 </div>
 <br>
 <div class="row"  *appHasPermiso="'ESCRIBIR_AUTOR || LEER_AUTOR  '"  >
   <div class="col">
-    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
+    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> {{ 'Limpiar'| translate }} </button>
   </div>
 </div>
 
 <br>
 <div class="row"  *appHasPermiso="'ESCRIBIR_AUTOR || LEER_AUTOR  '" >
   <div class="col">
-    <autor-table [autores]="autores"></autor-table>
+    <autor-table [autores]="autores"
+    [titulo]="'Autores_Disponibles'|translate"
+    [columnaNombre]="'Nombre'|translate"
+    [columnaFecha]="'Fecha_Nacimiento'|translate"
+    [columnaNacionalidad]="'Nacionalidad'|translate"
+    [columnaAcciones]="'Acciones'|translate"> </autor-table>
   </div>
 </div>
 

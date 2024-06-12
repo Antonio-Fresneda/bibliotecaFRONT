@@ -11,6 +11,9 @@ import { NgFor, NgIf } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@developer-partners/ngx-modal-dialog';
 import { EditGeneroComponent } from './components/edit-genero/edit-genero.component';
+
+import { TranslateModule, } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../rol/shared.module';
 
 
@@ -34,7 +37,9 @@ import { SharedModule } from '../rol/shared.module';
     NgbAlertModule,
     NgbPaginationModule,
     ModalModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    TranslateModule.forChild()
   ]
 
 })

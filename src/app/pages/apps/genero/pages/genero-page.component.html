@@ -1,21 +1,28 @@
-<h1>Lista Generos</h1>
+<!--<button (click)="switchLanguage('en')"><img src="assets/images/Flag_of_the_United_Kingdom_(3-5).svg.png"  width="30"/> </button>
+<button (click)="switchLanguage('es')"><img src="assets/images/Bandera_nacional_de_España.png"  width="30"/></button>-->
+<h1>{{'Lista_Generos'|translate}}</h1>
 <hr>
 <div class="row"  *appHasPermiso="'ESCRIBIR_GENERO || LEER_GENERO'"  >
   <div class="col">
-    <input type="text" [placeholder]="'Valor de Búsqueda'" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+    <input type="text" [placeholder]="'Valor_de_Busqueda'|translate" class="form-control" #txtValor (input)="busqueda(txtValor.value)">
+
   </div>
 </div>
 <br>
 <div class="row"  *appHasPermiso="'ESCRIBIR_GENERO || LEER_GENERO'" >
   <div class="col">
-    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> Limpiar</button>
+    <button class="btn btn-info" (click)="busquedaInicial()"><i class="bi bi-eraser-fill"></i> {{'Limpiar'|translate}}</button>
   </div>
 </div>
 <br>
 <div class="row"  *appHasPermiso="'ESCRIBIR_GENERO || LEER_GENERO'" >
-  <div class="col">
-      <genero-table [generos]="generos"></genero-table>
-  </div>
+  <genero-table [generos]="generos"
+  [titulo]="'Generos_Disponibles'|translate"
+  [columnaNombre]="'Nombre'|translate"
+  [columnaDescripcion]="'Descripcion'|translate"
+  [columnaEdadRecomendada]="'Edad_Recomendada'|translate"
+  [columnaUrlWikipedia]="'UrlWikipedia'|translate"
+  [columnaAcciones]="'Acciones'|translate"></genero-table>
 </div>
 <div class="floating-button" *appHasPermiso="'ESCRIBIR_GENERO'">
   <button (click)="createGenero()"><img src="assets/images/icon/plus.png"  width="50"/></button>

@@ -3,6 +3,9 @@ import { BibliotecaService } from '../services/biblioteca.service';
 import { Biblioteca } from '../interfaces/biblioteca';
 import { ModalService } from '@developer-partners/ngx-modal-dialog';
 import { NewBibliotecaComponent } from '../components/new-biblioteca/new-biblioteca.component';
+import { DialogService } from '../../error/dialog.service';
+import { Subscription } from 'rxjs';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -27,22 +30,42 @@ export class BiblitoecaPageComponent implements OnInit {
 
   public bibliotecaBusqueda:Biblioteca[] = [];
 
+  private translateSubscription: Subscription | null = null;;
+
+
   constructor(
     private bibliotecaService: BibliotecaService,
-    private readonly _modalService:ModalService
+    private readonly _modalService:ModalService,
+    private dialogService: DialogService,
+    private translate :TranslateService
   ) { }
 
 
   ngOnInit(): void {
     this.busquedaInicial();
+
+    this.translateSubscription = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.updateTranslations();
+    });
+
+    this.updateTranslations();
   }
+
+  private updateTranslations() {
+    this.bibliotecas = [...this.bibliotecas];
+  }
+
   @ViewChild('txtValor') txtValor: any;
 
   busquedaInicial(): void {
     this.bibliotecaService.searchBiblioteca().subscribe(
       bibliotecas => {
         this.bibliotecas = bibliotecas;
-        console.log(this.bibliotecas)
+      } ,
+      error => {
+        if (error.status === 403) {
+          this.dialogService.openErrorDialog('Error 403 Forbidden: No tienes acceso a este recurso.');
+        }
       }
     );
 
